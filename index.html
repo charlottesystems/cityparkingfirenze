@@ -1523,12 +1523,12 @@
         form.style.opacity = '1';
         form.style.pointerEvents = 'auto';
         if (submitBtn) submitBtn.textContent = submitBtn.getAttribute('data-lang') === 'en' ? 'Send booking' : 'Invia prenotazione';
-        alert('Errore nell'invio. Riprova o scrivi a prenotazione.cityparking@gmail.com');
+        alert(`Errore nell'invio. Riprova o scrivi a prenotazione.cityparking@gmail.com`);
       }
     } catch (err) {
       form.style.opacity = '1';
       form.style.pointerEvents = 'auto';
-      alert('Errore di connessione. Riprova o scrivi a prenotazione.cityparking@gmail.com');
+      alert("Errore di connessione. Riprova o scrivi a prenotazione.cityparking@gmail.com");
     }
   }
 </script>
