@@ -9,15 +9,11 @@
 <meta name="robots" content="index, follow">
 <meta name="author" content="City Parking S.r.l.">
 <link rel="canonical" href="https://cityparkingfirenze.it/">
-
-<!-- Open Graph (per condivisioni social e Google) -->
 <meta property="og:title" content="Parcheggio Firenze Centro — City Parking | Garage Custoditi ZTL">
 <meta property="og:description" content="4 garage custoditi nel centro storico di Firenze con permesso ZTL incluso. Prenota online il tuo posto auto.">
 <meta property="og:url" content="https://cityparkingfirenze.it/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
-
-<!-- Schema.org LocalBusiness (dati strutturati per Google) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,7 +98,7 @@
   .section-kicker-line { width: 24px; height: 1px; background: var(--blue); flex-shrink: 0; }
   .section-kicker span { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); font-weight: 400; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 3.5vw, 52px); font-weight: 300; color: var(--text); letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 20px; }
-  .section-title em { font-style: italic; color: var(--accent); position: relative; display: inline-block; }
+  .section-title em { font-style: italic; color: var(--accent); }
   .section-sub { font-size: 14px; color: var(--text-dim); max-width: 480px; line-height: 1.9; margin-bottom: 64px; font-weight: 300; }
   .section-alt { background: linear-gradient(180deg, var(--bg2) 0%, #edf2f8 100%); }
 
@@ -149,7 +145,6 @@
   .garage-zone.ztl { border: 1px solid var(--blue); color: var(--blue); background: var(--blue-dim); }
   .garage-zone.no-ztl { border: 1px solid var(--border); color: var(--text-light); }
 
-  .pricing-note { font-size: 13px; color: var(--text-dim); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 17px; margin-bottom: 32px; padding: 14px 20px; border-left: 2px solid var(--accent); background: var(--accent-light); }
   .pricing-garage-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--text); margin-bottom: 20px; margin-top: 48px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light); }
   .pricing-garage-title:first-of-type { margin-top: 0; }
   .pricing-garage-title em { font-style: italic; color: var(--accent); }
@@ -166,17 +161,34 @@
   .price-value { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; color: var(--text); line-height: 1; background: linear-gradient(135deg, var(--text) 60%, var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .price-unit { font-size: 16px; color: var(--text-dim); margin-left: 2px; font-family: 'Cormorant Garamond', serif; }
 
+  /* ZTL SECTION */
   .ztl-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   .ztl-card { background: var(--surface); border: 1px solid var(--border); padding: 40px 40px; }
   .ztl-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--text); margin-bottom: 16px; }
   .ztl-card p, .ztl-card li { font-size: 14px; color: var(--text-dim); line-height: 1.9; font-weight: 300; }
-  .ztl-card ul { padding-left: 16px; margin-top: 12px; }
+  .ztl-card ul { padding-left: 20px; margin-top: 12px; }
+  .ztl-card ul li { margin-bottom: 8px; }
   .ztl-garages { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
   .ztl-badge { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; font-weight: 400; }
   .ztl-badge.yes { border: 1px solid var(--blue); color: var(--blue); background: var(--blue-dim); }
   .ztl-badge.no { border: 1px solid var(--border); color: var(--text-light); }
   .ztl-note { margin-top: 20px; padding: 16px 20px; border-left: 2px solid var(--blue); background: var(--blue-dim); font-size: 13px; color: var(--text-dim); line-height: 1.8; font-weight: 300; }
   .ztl-full { grid-column: 1 / -1; }
+  .ztl-warning { margin-top: 20px; padding: 18px 22px; border-left: 3px solid var(--accent); background: var(--accent-light); font-size: 13px; color: var(--text); line-height: 1.8; font-weight: 400; }
+  .ztl-warning strong { font-weight: 600; text-decoration: underline; }
+  .ztl-hero-box { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; background: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+  .ztl-hero-left { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+  .ztl-hero-left .ztl-tagline { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--text); line-height: 1.5; margin-bottom: 20px; font-style: italic; }
+  .ztl-hero-right { padding: 40px; background: var(--bg2); display: flex; flex-direction: column; justify-content: center; }
+  .ztl-lang-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); font-weight: 500; margin-bottom: 16px; }
+  .ztl-body-text { font-size: 14px; color: var(--text-dim); line-height: 1.9; font-weight: 300; }
+  .ztl-body-text strong { color: var(--text); font-weight: 600; }
+  .ztl-multa-card { grid-column: 1 / -1; background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--accent); padding: 40px; }
+  .ztl-multa-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--accent); margin-bottom: 24px; }
+  .ztl-multa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .ztl-doc-list { list-style: none; padding: 0; margin: 16px 0 0; }
+  .ztl-doc-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-dim); line-height: 1.6; font-weight: 300; }
+  .ztl-doc-list li::before { content: '■'; color: var(--accent); font-size: 8px; margin-top: 5px; flex-shrink: 0; }
 
   .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
   .contact-item { background: var(--surface); padding: 40px 36px; transition: background 0.2s, transform 0.2s; position: relative; overflow: hidden; }
@@ -222,6 +234,8 @@
     .pricing-grid { grid-template-columns: 1fr; }
     .ztl-layout { grid-template-columns: 1fr; }
     .ztl-full { grid-column: auto; }
+    .ztl-hero-box { grid-template-columns: 1fr; }
+    .ztl-multa-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .form-grid { grid-template-columns: 1fr; }
     .booking-panel { padding: 28px 24px; }
@@ -317,26 +331,13 @@
     <form action="https://script.google.com/macros/s/AKfycbzRB9vkm8WvvjDW23-h5xdRsWsv4vsiwDzip5eTs_oANYTeNcMs1OohHT44aatfBUt6/exec" method="POST" target="_blank">
       <input type="hidden" name="garage" value="Fiesolana">
       <div class="form-grid">
+        <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label><label class="form-label" data-lang="en">Full Name <span class="req">*</span></label><input type="text" name="nome" class="form-input" required placeholder="Mario Rossi"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
-          <label class="form-label">Email <span class="req">*</span></label>
-          <input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Full Name <span class="req">*</span></label>
-          <input type="text" name="nome" class="form-input" required placeholder="Mario Rossi">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Telefono <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Phone <span class="req">*</span></label>
-          <input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
+          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
           <select name="veicolo" class="form-select" required onchange="updatePricing(this,'hint-fiesolana','std')">
-            <option value="" data-lang="it">Seleziona…</option>
-            <option value="" data-lang="en">Select…</option>
+            <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
             <option value="Piccola — Fiat 500, Toyota Aygo (35€/giorno · 7€/ora)" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option>
             <option value="Small — Fiat 500, Toyota Aygo (€35/day · €7/hr)" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
             <option value="Media/Grande — SUV, Mercedes GLE (40€/giorno · 8€/ora)" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option>
@@ -346,35 +347,15 @@
           </select>
           <div class="pricing-hint" id="hint-fiesolana"></div>
         </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
-          <input type="date" name="arrivo" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
-          <input type="time" name="oraArr" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
-          <input type="date" name="partenza" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
-          <input type="time" name="oraPart" class="form-input" required>
-        </div>
-        <div class="form-group full">
-          <label class="form-label" data-lang="it">Note aggiuntive</label>
-          <label class="form-label" data-lang="en">Additional notes</label>
-          <textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea>
-        </div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="arrivo" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="oraArr" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="partenza" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="oraPart" class="form-input" required></div>
+        <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea></div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione.</p>
-        <p class="form-note" data-lang="en">You will see a booking summary upon submission.</p>
+        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione in una nuova scheda.</p>
+        <p class="form-note" data-lang="en">A booking summary will open in a new tab upon submission.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
         <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
@@ -394,26 +375,13 @@
     <form action="https://script.google.com/macros/s/AKfycbzRB9vkm8WvvjDW23-h5xdRsWsv4vsiwDzip5eTs_oANYTeNcMs1OohHT44aatfBUt6/exec" method="POST" target="_blank">
       <input type="hidden" name="garage" value="Venezia">
       <div class="form-grid">
+        <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label><label class="form-label" data-lang="en">Full Name <span class="req">*</span></label><input type="text" name="nome" class="form-input" required placeholder="Mario Rossi"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
-          <label class="form-label">Email <span class="req">*</span></label>
-          <input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Full Name <span class="req">*</span></label>
-          <input type="text" name="nome" class="form-input" required placeholder="Mario Rossi">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Telefono <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Phone <span class="req">*</span></label>
-          <input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
+          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
           <select name="veicolo" class="form-select" required onchange="updatePricing(this,'hint-venezia','std')">
-            <option value="" data-lang="it">Seleziona…</option>
-            <option value="" data-lang="en">Select…</option>
+            <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
             <option value="Piccola — Fiat 500, Toyota Aygo (35€/giorno · 7€/ora)" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option>
             <option value="Small — Fiat 500, Toyota Aygo (€35/day · €7/hr)" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
             <option value="Media/Grande — SUV, Mercedes GLE (40€/giorno · 8€/ora)" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option>
@@ -423,35 +391,15 @@
           </select>
           <div class="pricing-hint" id="hint-venezia"></div>
         </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
-          <input type="date" name="arrivo" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
-          <input type="time" name="oraArr" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
-          <input type="date" name="partenza" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
-          <input type="time" name="oraPart" class="form-input" required>
-        </div>
-        <div class="form-group full">
-          <label class="form-label" data-lang="it">Note aggiuntive</label>
-          <label class="form-label" data-lang="en">Additional notes</label>
-          <textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea>
-        </div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="arrivo" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="oraArr" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="partenza" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="oraPart" class="form-input" required></div>
+        <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea></div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione.</p>
-        <p class="form-note" data-lang="en">You will see a booking summary upon submission.</p>
+        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione in una nuova scheda.</p>
+        <p class="form-note" data-lang="en">A booking summary will open in a new tab upon submission.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
         <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
@@ -471,26 +419,13 @@
     <form action="https://script.google.com/macros/s/AKfycbzRB9vkm8WvvjDW23-h5xdRsWsv4vsiwDzip5eTs_oANYTeNcMs1OohHT44aatfBUt6/exec" method="POST" target="_blank">
       <input type="hidden" name="garage" value="Cimabue">
       <div class="form-grid">
+        <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label><label class="form-label" data-lang="en">Full Name <span class="req">*</span></label><input type="text" name="nome" class="form-input" required placeholder="Mario Rossi"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
-          <label class="form-label">Email <span class="req">*</span></label>
-          <input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Full Name <span class="req">*</span></label>
-          <input type="text" name="nome" class="form-input" required placeholder="Mario Rossi">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Telefono <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Phone <span class="req">*</span></label>
-          <input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
+          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
           <select name="veicolo" class="form-select" required onchange="updatePricing(this,'hint-cimabue','cim')">
-            <option value="" data-lang="it">Seleziona…</option>
-            <option value="" data-lang="en">Select…</option>
+            <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
             <option value="Piccola — Fiat 500, Toyota Aygo (25€/giorno · 6€/ora)" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (25€/giorno · 6€/ora)</option>
             <option value="Small — Fiat 500, Toyota Aygo (€25/day · €6/hr)" data-lang="en">Small — Fiat 500, Toyota Aygo… (€25/day · €6/hr)</option>
             <option value="Media — Fiat 500L, Ford Focus (30€/giorno · 6€/ora)" data-lang="it">Media — Fiat 500L, Ford Focus… (30€/giorno · 6€/ora)</option>
@@ -502,35 +437,15 @@
           </select>
           <div class="pricing-hint" id="hint-cimabue"></div>
         </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
-          <input type="date" name="arrivo" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
-          <input type="time" name="oraArr" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
-          <input type="date" name="partenza" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
-          <input type="time" name="oraPart" class="form-input" required>
-        </div>
-        <div class="form-group full">
-          <label class="form-label" data-lang="it">Note aggiuntive</label>
-          <label class="form-label" data-lang="en">Additional notes</label>
-          <textarea name="note" class="form-textarea" placeholder="Richieste particolari…"></textarea>
-        </div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="arrivo" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="oraArr" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="partenza" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="oraPart" class="form-input" required></div>
+        <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="note" class="form-textarea" placeholder="Richieste particolari…"></textarea></div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione.</p>
-        <p class="form-note" data-lang="en">You will see a booking summary upon submission.</p>
+        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione in una nuova scheda.</p>
+        <p class="form-note" data-lang="en">A booking summary will open in a new tab upon submission.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
         <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
@@ -550,26 +465,13 @@
     <form action="https://script.google.com/macros/s/AKfycbzRB9vkm8WvvjDW23-h5xdRsWsv4vsiwDzip5eTs_oANYTeNcMs1OohHT44aatfBUt6/exec" method="POST" target="_blank">
       <input type="hidden" name="garage" value="Borgo Pinti">
       <div class="form-grid">
+        <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label><label class="form-label" data-lang="en">Full Name <span class="req">*</span></label><input type="text" name="nome" class="form-input" required placeholder="Mario Rossi"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
-          <label class="form-label">Email <span class="req">*</span></label>
-          <input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Full Name <span class="req">*</span></label>
-          <input type="text" name="nome" class="form-input" required placeholder="Mario Rossi">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Telefono <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Phone <span class="req">*</span></label>
-          <input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000">
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
+          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
           <select name="veicolo" class="form-select" required onchange="updatePricing(this,'hint-borgopinti','std')">
-            <option value="" data-lang="it">Seleziona…</option>
-            <option value="" data-lang="en">Select…</option>
+            <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
             <option value="Piccola — Fiat 500, Toyota Aygo (35€/giorno · 7€/ora)" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option>
             <option value="Small — Fiat 500, Toyota Aygo (€35/day · €7/hr)" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
             <option value="Media/Grande — SUV, Mercedes GLE (40€/giorno · 8€/ora)" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option>
@@ -579,35 +481,15 @@
           </select>
           <div class="pricing-hint" id="hint-borgopinti"></div>
         </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
-          <input type="date" name="arrivo" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
-          <input type="time" name="oraArr" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
-          <input type="date" name="partenza" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
-          <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
-          <input type="time" name="oraPart" class="form-input" required>
-        </div>
-        <div class="form-group full">
-          <label class="form-label" data-lang="it">Note aggiuntive</label>
-          <label class="form-label" data-lang="en">Additional notes</label>
-          <textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea>
-        </div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="arrivo" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="oraArr" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="partenza" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="oraPart" class="form-input" required></div>
+        <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea></div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione.</p>
-        <p class="form-note" data-lang="en">You will see a booking summary upon submission.</p>
+        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione in una nuova scheda.</p>
+        <p class="form-note" data-lang="en">A booking summary will open in a new tab upon submission.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
         <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
@@ -662,21 +544,18 @@
   <div class="section-kicker"><div class="section-kicker-line"></div><span data-lang="it">Tariffe</span><span data-lang="en">Pricing</span></div>
   <h2 class="section-title" data-lang="it">Prezzi chiari,<br>nessuna <em>sorpresa.</em></h2>
   <h2 class="section-title" data-lang="en">Clear rates,<br>no <em>surprises.</em></h2>
-
   <div class="pricing-garage-title" data-lang="it">Fiesolana · Via Venezia · Borgo Pinti</div>
   <div class="pricing-garage-title" data-lang="en">Fiesolana · Via Venezia · Borgo Pinti</div>
   <div class="pricing-grid">
     <div class="price-card">
-      <div class="price-category" data-lang="it">Piccola</div>
-      <div class="price-category" data-lang="en">Small</div>
+      <div class="price-category" data-lang="it">Piccola</div><div class="price-category" data-lang="en">Small</div>
       <div class="price-examples">Toyota Aygo, Fiat 500, Smart…</div>
       <div class="price-divider"></div>
       <div class="price-row"><span class="price-label" data-lang="it">Al giorno</span><span class="price-label" data-lang="en">Per day</span><span><span class="price-value">35</span><span class="price-unit">€</span></span></div>
       <div class="price-row"><span class="price-label" data-lang="it">All'ora</span><span class="price-label" data-lang="en">Per hour</span><span><span class="price-value">7</span><span class="price-unit">€</span></span></div>
     </div>
     <div class="price-card">
-      <div class="price-category" data-lang="it">Media / Grande</div>
-      <div class="price-category" data-lang="en">Medium / Large</div>
+      <div class="price-category" data-lang="it">Media / Grande</div><div class="price-category" data-lang="en">Medium / Large</div>
       <div class="price-examples">Toyota C-HR, Mercedes GLE, SUV…</div>
       <div class="price-divider"></div>
       <div class="price-row"><span class="price-label" data-lang="it">Al giorno</span><span class="price-label" data-lang="en">Per day</span><span><span class="price-value">40</span><span class="price-unit">€</span></span></div>
@@ -691,29 +570,25 @@
       <div class="price-row"><span class="price-label" data-lang="it">All'ora</span><span class="price-label" data-lang="en">Per hour</span><span><span class="price-value">10</span><span class="price-unit">€</span></span></div>
     </div>
   </div>
-
   <div class="pricing-garage-title" data-lang="it">Cimabue <em>(tariffe distinte)</em></div>
   <div class="pricing-garage-title" data-lang="en">Cimabue <em>(separate rates)</em></div>
   <div class="pricing-grid" style="grid-template-columns: repeat(4, 1fr);">
     <div class="price-card">
-      <div class="price-category" data-lang="it">Piccola</div>
-      <div class="price-category" data-lang="en">Small</div>
+      <div class="price-category" data-lang="it">Piccola</div><div class="price-category" data-lang="en">Small</div>
       <div class="price-examples">Fiat 500, Toyota Aygo…</div>
       <div class="price-divider"></div>
       <div class="price-row"><span class="price-label" data-lang="it">Al giorno</span><span class="price-label" data-lang="en">Per day</span><span><span class="price-value">25</span><span class="price-unit">€</span></span></div>
       <div class="price-row"><span class="price-label" data-lang="it">All'ora</span><span class="price-label" data-lang="en">Per hour</span><span><span class="price-value">6</span><span class="price-unit">€</span></span></div>
     </div>
     <div class="price-card">
-      <div class="price-category" data-lang="it">Media</div>
-      <div class="price-category" data-lang="en">Medium</div>
+      <div class="price-category" data-lang="it">Media</div><div class="price-category" data-lang="en">Medium</div>
       <div class="price-examples">Fiat 500L, Ford Focus…</div>
       <div class="price-divider"></div>
       <div class="price-row"><span class="price-label" data-lang="it">Al giorno</span><span class="price-label" data-lang="en">Per day</span><span><span class="price-value">30</span><span class="price-unit">€</span></span></div>
       <div class="price-row"><span class="price-label" data-lang="it">All'ora</span><span class="price-label" data-lang="en">Per hour</span><span><span class="price-value">6</span><span class="price-unit">€</span></span></div>
     </div>
     <div class="price-card">
-      <div class="price-category" data-lang="it">Grande</div>
-      <div class="price-category" data-lang="en">Large</div>
+      <div class="price-category" data-lang="it">Grande</div><div class="price-category" data-lang="en">Large</div>
       <div class="price-examples">SUV, Mercedes GLE…</div>
       <div class="price-divider"></div>
       <div class="price-row"><span class="price-label" data-lang="it">Al giorno</span><span class="price-label" data-lang="en">Per day</span><span><span class="price-value">35</span><span class="price-unit">€</span></span></div>
@@ -735,38 +610,76 @@
 <!-- ZTL -->
 <section id="ztl" class="section-alt">
   <div class="section-kicker"><div class="section-kicker-line"></div><span>ZTL</span></div>
-  <h2 class="section-title" data-lang="it">Zona a Traffico<br><em>Limitato.</em></h2>
-  <h2 class="section-title" data-lang="en">Limited Traffic<br><em>Zone.</em></h2>
-  <p class="section-sub" data-lang="it">Porta telematica chiusa? Niente paura. Puoi passarci attraverso per raggiungere un garage City Parking.</p>
-  <p class="section-sub" data-lang="en">Telematic gate closed? Don't worry. You can pass through it to reach a City Parking garage.</p>
+  <h2 class="section-title" data-lang="it">Ingresso in Zona a<br>Traffico Limitato <em>ZTL</em></h2>
+  <h2 class="section-title" data-lang="en">Access to the Limited<br>Traffic Zone <em>ZTL</em></h2>
+
   <div class="ztl-layout">
-    <div class="ztl-card">
-      <h3 data-lang="it">Come funziona il permesso</h3>
-      <h3 data-lang="en">How the permit works</h3>
-      <p data-lang="it">City Parking S.r.l. inserisce direttamente le targhe nel portale S.A.S. del Comune di Firenze per il rilascio del permesso al transito in ZTL. Il permesso copre fino a 3 ore precedenti all'orario di inizio sosta. È richiesta una sosta minima di 1 ora.</p>
-      <p data-lang="en">City Parking S.r.l. enters your plate directly on the Municipality of Florence's S.A.S. portal to issue a ZTL transit permit. The permit covers up to 3 hours before the start of parking. A minimum stay of 1 hour is required.</p>
-      <div class="ztl-note" data-lang="it">Il permesso non autorizza il transito nelle corsie riservate ai mezzi pubblici.</div>
-      <div class="ztl-note" data-lang="en">The permit does not authorise transit in lanes reserved for public transport.</div>
-    </div>
-    <div class="ztl-card">
-      <h3 data-lang="it">Quali garage hanno accesso ZTL</h3>
-      <h3 data-lang="en">Which garages have ZTL access</h3>
-      <div class="ztl-garages">
-        <span class="ztl-badge yes">City Parking Fiesolana ✓</span>
-        <span class="ztl-badge yes">City Parking Via Venezia ✓</span>
-        <span class="ztl-badge yes">Garage Firenze Borgo Pinti ✓</span>
-        <span class="ztl-badge no" data-lang="it">City Parking Cimabue — fuori ZTL</span>
-        <span class="ztl-badge no" data-lang="en">City Parking Cimabue — outside ZTL</span>
+
+    <!-- BOX PRINCIPALE: IT + EN affiancati -->
+    <div class="ztl-hero-box">
+      <div class="ztl-hero-left">
+        <div class="ztl-lang-label" data-lang="it">Italiano</div>
+        <div class="ztl-lang-label" data-lang="en">Italian</div>
+        <p class="ztl-tagline" data-lang="it">Porta telematica chiusa? Niente paura! Puoi passarvi attraverso per dirigerti presso un garage City Parking. Se effettuerai una sosta di almeno 1 ora potrai ottenere un'autorizzazione ZTL che ti terrà indenne da sanzioni per violazione di ZTL.</p>
+        <p class="ztl-tagline" data-lang="en">Telematic gate closed? Don't worry! You can pass through it to reach a City Parking garage. If you park for at least 1 hour, you can obtain a ZTL authorization that will protect you from penalties for ZTL violations.</p>
+        <div class="ztl-body-text" data-lang="it">
+          <p>City Parking S.r.l. si fa carico di provvedere all'inserimento delle targhe nel portale S.A.S. del Comune di Firenze per il rilascio del permesso al transito nella Zona a Traffico Limitato del centro storico fiorentino. Il permesso al transito che rilasciamo copre fino a 3 ore precedenti all'orario di inizio sosta all'interno dei nostri garage. Si prega i nostri gentili clienti di fare attenzione a non entrare nel centro storico attraverso le corsie riservate ai mezzi pubblici in quanto il permesso che rilasciamo non consente di transitarvi.</p>
+          <div class="ztl-warning" style="margin-top:20px;">
+            <strong>Ricordiamo che l'ingresso in ZTL è consentito ai clienti dei garage City Parking Fiesolana, City Parking Via Venezia e Garage Firenze Borgo Pinti, i quali sono situati all'interno della Zona a Traffico Limitato. Pertanto i clienti del garage City Parking Cimabue non possono ottenere il rilascio del permesso al transito nel centro storico fiorentino.</strong>
+          </div>
+        </div>
+        <div class="ztl-body-text" data-lang="en">
+          <p>City Parking S.r.l. takes care of providing license plate information on the S.A.S. portal of the Municipality of Florence for the release of a permit to access the limited traffic zone of the historic center of Florence. The transit permit we issue covers up to 3 hours before the start of parking within our garages. We kindly ask our valued customers to avoid entering the historic center through lanes reserved for public transport as the permit we issue does not allow transit in those lanes.</p>
+          <div class="ztl-warning" style="margin-top:20px;">
+            <strong>Please note that access to the Limited Traffic Zone (ZTL) is allowed only for customers of garages City Parking Fiesolana, City Parking Via Venezia and Garage Firenze Borgo Pinti, which are located within the restricted area. Therefore, customers of garage City Parking Cimabue cannot obtain permission to enter the historical center of Florence.</strong>
+          </div>
+        </div>
       </div>
-      <p data-lang="it">I clienti del garage Cimabue non possono ottenere il permesso di transito nel centro storico.</p>
-      <p data-lang="en">Customers of Cimabue garage cannot obtain a transit permit for the historic centre.</p>
+      <div class="ztl-hero-right">
+        <div class="ztl-garages" style="margin-bottom:24px;">
+          <span class="ztl-badge yes">City Parking Fiesolana ✓</span>
+          <span class="ztl-badge yes">City Parking Via Venezia ✓</span>
+          <span class="ztl-badge yes">Garage Firenze Borgo Pinti ✓</span>
+          <span class="ztl-badge no" data-lang="it">City Parking Cimabue — fuori ZTL</span>
+          <span class="ztl-badge no" data-lang="en">City Parking Cimabue — outside ZTL</span>
+        </div>
+        <div class="ztl-note" data-lang="it">Il permesso non autorizza il transito nelle corsie riservate ai mezzi pubblici.</div>
+        <div class="ztl-note" data-lang="en">The permit does not authorise transit in lanes reserved for public transport.</div>
+      </div>
     </div>
-    <div class="ztl-card ztl-full">
-      <h3 data-lang="it">Hai ricevuto una multa ZTL non dovuta?</h3>
-      <h3 data-lang="en">Received an unjust ZTL fine?</h3>
-      <p data-lang="it">Il nostro ufficio ricorsi gestisce l'assistenza al ricorso al Prefetto entro 60 giorni dalla notifica del verbale. Scrivi a <a href="mailto:info.cityparking@gmail.com" style="color:var(--accent)">info.cityparking@gmail.com</a> allegando: documento d'identità fronte/retro del destinatario, verbale completo, data di notifica e — se disponibile — il ticket comprovante la sosta.</p>
-      <p data-lang="en">Our appeals office handles the appeal to the Prefect within 60 days of fine notification. Write to <a href="mailto:info.cityparking@gmail.com" style="color:var(--accent)">info.cityparking@gmail.com</a> attaching: identity document (front/back), complete violation notice, notification date, and — if available — the parking ticket.</p>
+
+    <!-- MULTA ZTL -->
+    <div class="ztl-multa-card">
+      <h3 data-lang="it">In caso di notificazione di multa per violazione della ZTL non dovuta</h3>
+      <h3 data-lang="en">If you receive an unjust ZTL fine notification</h3>
+      <div class="ztl-multa-grid">
+        <div>
+          <div class="ztl-body-text" data-lang="it">
+            <p>Il cliente può rivolgersi all'email <a href="mailto:info.cityparking@gmail.com" style="color:var(--accent)">info.cityparking@gmail.com</a> e richiedere il servizio di assistenza ai ricorsi amministrativi. Se munito di ticket comprovante la sosta presso i garage City Parking si raccomanda al cliente di inviarlo al suddetto indirizzo e-mail per velocizzare i tempi di ricorso.</p>
+            <p style="margin-top:12px;">L'ufficio ricorsi amministrativi assumerà il compito, previo accertamento dei fatti e della assenza di colpa del cliente, di assistere attivamente la procedura di ricorso al Prefetto per richiedere l'annullamento della multa entro il termine stabilito per legge di 60 giorni dalla data di notifica del verbale.</p>
+          </div>
+          <div class="ztl-body-text" data-lang="en">
+            <p>The customer can contact <a href="mailto:info.cityparking@gmail.com" style="color:var(--accent)">info.cityparking@gmail.com</a> to request assistance with administrative appeals. If the customer has a ticket proving parking at City Parking garages, we recommend sending it to the aforementioned email address to expedite the appeal process.</p>
+            <p style="margin-top:12px;">The administrative appeals office will assume the task, after verifying the facts and absence of fault on the part of the customer, to actively assist in the appeal procedure to the Prefect to request the cancellation of the fine within the time limit established by law of 60 days from the date of notification of the violation.</p>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px;" data-lang="it">Documentazione richiesta al cliente</p>
+          <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px;" data-lang="en">Documentation required from the customer</p>
+          <ul class="ztl-doc-list" data-lang="it">
+            <li>Documento d'identità fronte/retro del destinatario del verbale</li>
+            <li>Verbale completo</li>
+            <li>Data di notifica (ovvero la data in cui il verbale è stato recapitato per PEC o per raccomandata alla propria residenza)</li>
+          </ul>
+          <ul class="ztl-doc-list" data-lang="en">
+            <li>Front and back of the recipient's identity document</li>
+            <li>Complete violation notice</li>
+            <li>Notification date (the date on which the violation notice was delivered by PEC or registered mail to the recipient's residence)</li>
+          </ul>
+        </div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -781,18 +694,15 @@
   <p class="section-sub" data-lang="en">For bookings, information or ZTL assistance.</p>
   <div class="contact-grid">
     <div class="contact-item">
-      <div class="contact-label" data-lang="it">Prenotazioni</div>
-      <div class="contact-label" data-lang="en">Bookings</div>
+      <div class="contact-label" data-lang="it">Prenotazioni</div><div class="contact-label" data-lang="en">Bookings</div>
       <a href="mailto:prenotazione.cityparking@gmail.com" class="contact-value">prenotazione.cityparking@gmail.com</a>
     </div>
     <div class="contact-item">
-      <div class="contact-label" data-lang="it">Ricorsi ZTL e informazioni</div>
-      <div class="contact-label" data-lang="en">ZTL appeals &amp; information</div>
+      <div class="contact-label" data-lang="it">Ricorsi ZTL e informazioni</div><div class="contact-label" data-lang="en">ZTL appeals &amp; information</div>
       <a href="mailto:info.cityparking@gmail.com" class="contact-value">info.cityparking@gmail.com</a>
     </div>
     <div class="contact-item">
-      <div class="contact-label" data-lang="it">Mappa garage</div>
-      <div class="contact-label" data-lang="en">Garage map</div>
+      <div class="contact-label" data-lang="it">Mappa garage</div><div class="contact-label" data-lang="en">Garage map</div>
       <a href="https://www.google.com/maps/d/u/1/viewer?mid=1oKV5JQ6jX3xfmoB18GAoW_vvqhYLDwk" target="_blank" class="contact-value" data-lang="it">Visualizza tutti i garage →</a>
       <a href="https://www.google.com/maps/d/u/1/viewer?mid=1oKV5JQ6jX3xfmoB18GAoW_vvqhYLDwk" target="_blank" class="contact-value" data-lang="en">View all garages →</a>
     </div>
@@ -833,12 +743,12 @@
 
   const PRICING = {
     std: {
-      it: { small:'35€ al giorno · 7€ all\'ora', medium:'40€ al giorno · 8€ all\'ora', luxury:'50€ al giorno · 10€ all\'ora' },
-      en: { small:'€35 per day · €7 per hour', medium:'€40 per day · €8 per hour', luxury:'€50 per day · €10 per hour' }
+      it: { small:"35\u20ac al giorno \u00b7 7\u20ac all'ora", medium:"40\u20ac al giorno \u00b7 8\u20ac all'ora", luxury:"50\u20ac al giorno \u00b7 10\u20ac all'ora" },
+      en: { small:"\u20ac35 per day \u00b7 \u20ac7 per hour", medium:"\u20ac40 per day \u00b7 \u20ac8 per hour", luxury:"\u20ac50 per day \u00b7 \u20ac10 per hour" }
     },
     cim: {
-      it: { small:'25€ al giorno · 6€ all\'ora', medium:'30€ al giorno · 6€ all\'ora', large:'35€ al giorno · 7€ all\'ora', luxury:'40-45€ al giorno · 9€ all\'ora' },
-      en: { small:'€25 per day · €6 per hour', medium:'€30 per day · €6 per hour', large:'€35 per day · €7 per hour', luxury:'€40-45 per day · €9 per hour' }
+      it: { small:"25\u20ac al giorno \u00b7 6\u20ac all'ora", medium:"30\u20ac al giorno \u00b7 6\u20ac all'ora", large:"35\u20ac al giorno \u00b7 7\u20ac all'ora", luxury:"40-45\u20ac al giorno \u00b7 9\u20ac all'ora" },
+      en: { small:"\u20ac25 per day \u00b7 \u20ac6 per hour", medium:"\u20ac30 per day \u00b7 \u20ac6 per hour", large:"\u20ac35 per day \u00b7 \u20ac7 per hour", luxury:"\u20ac40-45 per day \u00b7 \u20ac9 per hour" }
     }
   };
 
