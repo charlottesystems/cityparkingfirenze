@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — City Parking Firenze</title>
+<meta name="description" content="Informativa sul trattamento dei dati personali ai sensi del Regolamento UE 2016/679 — City Parking S.r.l., Firenze.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://cityparkingfirenze.it/privacy.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #f7f4ef; --bg2: #f0ece4; --surface: #fffdf9; --border: #e0d9ce;
+    --border-light: #ece8e0; --text: #1a1612; --text-dim: #7a7060;
+    --text-light: #b0a590; --accent: #8b6b3d; --accent-light: rgba(139,107,61,0.08);
+    --blue: #2d7dd2; --blue-light: #5ba3e8; --blue-dim: rgba(45,125,210,0.10); --white: #fffdf9;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 68px; background: rgba(247,244,239,0.97); box-shadow: 0 1px 0 rgba(139,107,61,0.08), 0 2px 12px rgba(139,107,61,0.04); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--text); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-logo span { color: var(--blue); }
+  .nav-back { font-size: 12px; font-weight: 400; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
+  .nav-back:hover { color: var(--accent); }
+
+  /* HERO STRIP */
+  .page-hero { padding: 120px 56px 64px; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, var(--bg2), var(--bg)); }
+  .page-kicker { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+  .page-kicker-line { width: 24px; height: 1px; background: var(--blue); }
+  .page-kicker span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); font-weight: 400; }
+  .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 60px); font-weight: 300; line-height: 1.05; color: var(--text); margin-bottom: 16px; }
+  .page-title em { font-style: italic; color: var(--accent); }
+  .page-meta { font-size: 12px; color: var(--text-light); letter-spacing: 0.06em; }
+
+  /* LAYOUT */
+  .privacy-wrapper { max-width: 860px; margin: 0 auto; padding: 64px 56px 100px; }
+
+  /* TOC */
+  .toc { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--blue); padding: 32px 36px; margin-bottom: 64px; }
+  .toc-title { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 20px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 8px; }
+  .toc a { font-size: 13px; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+  .toc a:hover { color: var(--accent); }
+
+  /* TITOLARE BOX */
+  .titolare-box { background: var(--surface); border: 1px solid var(--border); padding: 32px 36px; margin-bottom: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .titolare-field { display: flex; flex-direction: column; gap: 4px; }
+  .titolare-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 400; }
+  .titolare-value { font-size: 14px; color: var(--text); font-weight: 300; }
+  .titolare-value a { color: var(--accent); text-decoration: none; }
+
+  /* SEZIONI */
+  .privacy-section { margin-bottom: 56px; padding-bottom: 56px; border-bottom: 1px solid var(--border-light); }
+  .privacy-section:last-child { border-bottom: none; }
+  .section-num { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 8px; }
+  .section-heading { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; color: var(--text); margin-bottom: 24px; line-height: 1.15; }
+  .section-heading em { font-style: italic; color: var(--accent); }
+
+  /* TESTO */
+  .privacy-section p { font-size: 14px; color: var(--text-dim); line-height: 1.9; font-weight: 300; margin-bottom: 16px; }
+  .privacy-section p:last-child { margin-bottom: 0; }
+
+  /* LISTE */
+  .privacy-list { list-style: none; padding: 0; margin: 16px 0; }
+  .privacy-list li { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border-light); font-size: 14px; color: var(--text-dim); line-height: 1.7; font-weight: 300; }
+  .privacy-list li:last-child { border-bottom: none; }
+  .privacy-list li::before { content: '■'; color: var(--accent); font-size: 7px; margin-top: 6px; flex-shrink: 0; }
+
+  /* DIRITTI GRID */
+  .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .right-card { background: var(--surface); border: 1px solid var(--border); padding: 24px; }
+  .right-card-title { font-size: 12px; font-weight: 500; color: var(--text); letter-spacing: 0.04em; margin-bottom: 8px; }
+  .right-card-desc { font-size: 13px; color: var(--text-dim); line-height: 1.7; font-weight: 300; }
+
+  /* SERVIZI TERZI */
+  .service-block { background: var(--bg2); border: 1px solid var(--border); padding: 24px 28px; margin-bottom: 16px; }
+  .service-name { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+  .service-provider { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .service-desc { font-size: 13px; color: var(--text-dim); line-height: 1.7; font-weight: 300; }
+  .service-desc a { color: var(--accent); text-decoration: none; }
+
+  /* NOTE BOX */
+  .note-box { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 20px 24px; margin: 24px 0; font-size: 13px; color: var(--text-dim); line-height: 1.8; font-weight: 300; }
+
+  /* FOOTER */
+  footer { padding: 40px 56px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; background: linear-gradient(180deg, var(--bg2), #e8eef5); }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 11px; color: var(--text-light); font-weight: 300; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; height: 58px; }
+    .page-hero { padding: 90px 24px 48px; }
+    .privacy-wrapper { padding: 48px 24px 80px; }
+    .titolare-box { grid-template-columns: 1fr; }
+    .rights-grid { grid-template-columns: 1fr; }
+    footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">City<span>Parking</span></a>
+  <a href="/" class="nav-back">← Torna al sito</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-kicker"><div class="page-kicker-line"></div><span>Informativa legale</span></div>
+  <h1 class="page-title">Privacy <em>Policy</em></h1>
+  <p class="page-meta">Ai sensi degli artt. 13 e 14 del Regolamento UE 2016/679 (GDPR) &nbsp;·&nbsp; Ultima modifica: 11 agosto 2023</p>
+</div>
+
+<div class="privacy-wrapper">
+
+  <!-- TITOLARE -->
+  <div class="titolare-box">
+    <div class="titolare-field"><span class="titolare-label">Titolare del trattamento</span><span class="titolare-value">City Parking S.r.l.</span></div>
+    <div class="titolare-field"><span class="titolare-label">Sede legale</span><span class="titolare-value">Via Lorenzo Il Magnifico 26, 50129 Firenze (FI)</span></div>
+    <div class="titolare-field"><span class="titolare-label">Partita IVA / C.F.</span><span class="titolare-value">07108520482</span></div>
+    <div class="titolare-field"><span class="titolare-label">REA</span><span class="titolare-value">FI – 680173</span></div>
+    <div class="titolare-field"><span class="titolare-label">Capitale sociale</span><span class="titolare-value">€ 10.000,00 i.v.</span></div>
+    <div class="titolare-field"><span class="titolare-label">Email del titolare</span><span class="titolare-value"><a href="mailto:amministrazione.cityparking@gmail.com">amministrazione.cityparking@gmail.com</a></span></div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Indice</div>
+    <ol>
+      <li><a href="#dati-raccolti">Dati personali raccolti</a></li>
+      <li><a href="#modalita">Modalità e luogo del trattamento</a></li>
+      <li><a href="#base-giuridica">Base giuridica del trattamento</a></li>
+      <li><a href="#finalita">Finalità del trattamento</a></li>
+      <li><a href="#servizi-terzi">Servizi terzi utilizzati</a></li>
+      <li><a href="#diritti">Diritti dell'utente</a></li>
+      <li><a href="#altro">Ulteriori informazioni</a></li>
+      <li><a href="#definizioni">Definizioni</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. DATI RACCOLTI -->
+  <div class="privacy-section" id="dati-raccolti">
+    <div class="section-num">01</div>
+    <h2 class="section-heading">Dati personali <em>raccolti</em></h2>
+    <p>Questo sito web raccoglie, in modo autonomo, le seguenti categorie di dati personali:</p>
+    <ul class="privacy-list">
+      <li>Dati di utilizzo (navigazione, indirizzo IP, browser, sistema operativo)</li>
+      <li>Nome e cognome</li>
+      <li>Numero di telefono</li>
+      <li>Indirizzo email</li>
+      <li>Durata di soggiorno nella città di Firenze</li>
+      <li>Dati comunicati durante l'utilizzo del servizio di prenotazione parcheggio</li>
+    </ul>
+    <p>I dati personali possono essere forniti liberamente dall'utente, oppure — nel caso dei dati di utilizzo — raccolti automaticamente durante la navigazione, anche tramite la compilazione delle sezioni di prenotazione parcheggio.</p>
+    <p>Salvo diversa indicazione, tutti i dati richiesti dal sito sono obbligatori. Il rifiuto di fornirli potrebbe rendere impossibile l'erogazione del servizio. I dati indicati come facoltativi possono essere omessi senza conseguenze sull'operatività del servizio.</p>
+    <div class="note-box">L'eventuale utilizzo di cookie o altri strumenti di tracciamento ha la finalità di fornire il servizio richiesto dall'utente e le ulteriori finalità descritte in questa informativa e nella Cookie Policy.</div>
+    <p>L'utente si assume la responsabilità dei dati personali di terzi comunicati tramite questo sito e garantisce di avere il diritto di diffonderli, manlevando il Titolare da qualsiasi responsabilità verso terzi.</p>
+  </div>
+
+  <!-- 2. MODALITA -->
+  <div class="privacy-section" id="modalita">
+    <div class="section-num">02</div>
+    <h2 class="section-heading">Modalità e luogo <em>del trattamento</em></h2>
+    <p>Il Titolare adotta misure di sicurezza adeguate a prevenire accessi non autorizzati, divulgazione, modifica o distruzione dei dati personali. Il trattamento avviene con strumenti informatici e telematici, con logiche strettamente correlate alle finalità indicate.</p>
+    <p>Oltre al Titolare, possono accedere ai dati soggetti coinvolti nell'organizzazione del sito (personale amministrativo, commerciale, marketing, legale, amministratori di sistema) ovvero soggetti esterni (fornitori tecnici, hosting provider, società informatiche, agenzie di comunicazione), nominati ove necessario Responsabili del Trattamento. L'elenco aggiornato dei Responsabili può essere richiesto al Titolare in qualsiasi momento.</p>
+    <p><strong>Luogo del trattamento:</strong> i dati sono trattati presso le sedi operative del Titolare e in ogni altro luogo in cui le parti coinvolte siano localizzate.</p>
+    <p><strong>Periodo di conservazione:</strong> i dati sono conservati per il tempo strettamente necessario alle finalità per cui sono stati raccolti:</p>
+    <ul class="privacy-list">
+      <li>Dati raccolti per l'esecuzione di un contratto: fino al completamento del contratto.</li>
+      <li>Dati raccolti per interesse legittimo del Titolare: fino al soddisfacimento di tale interesse.</li>
+      <li>Dati trattati su base consensuale: fino alla revoca del consenso da parte dell'utente.</li>
+    </ul>
+    <p>Al termine del periodo di conservazione i dati vengono cancellati e i diritti di accesso, cancellazione, rettificazione e portabilità non potranno più essere esercitati.</p>
+  </div>
+
+  <!-- 3. BASE GIURIDICA -->
+  <div class="privacy-section" id="base-giuridica">
+    <div class="section-num">03</div>
+    <h2 class="section-heading">Base giuridica <em>del trattamento</em></h2>
+    <p>Il Titolare tratta dati personali al ricorrere di una delle seguenti condizioni:</p>
+    <ul class="privacy-list">
+      <li><strong>Consenso</strong> — l'utente ha espresso il consenso per una o più finalità specifiche.</li>
+      <li><strong>Esecuzione contrattuale</strong> — il trattamento è necessario per eseguire un contratto con l'utente o misure precontrattuali.</li>
+      <li><strong>Obbligo legale</strong> — il trattamento è necessario per adempiere a un obbligo di legge.</li>
+      <li><strong>Interesse pubblico</strong> — il trattamento è necessario per un compito di interesse pubblico o per l'esercizio di pubblici poteri.</li>
+      <li><strong>Interesse legittimo</strong> — il trattamento è necessario per il perseguimento del legittimo interesse del Titolare o di terzi.</li>
+    </ul>
+    <p>È sempre possibile richiedere al Titolare di chiarire la base giuridica di ciascun trattamento, specificando se esso sia basato sulla legge, su un contratto o sia necessario per concluderne uno.</p>
+  </div>
+
+  <!-- 4. FINALITA -->
+  <div class="privacy-section" id="finalita">
+    <div class="section-num">04</div>
+    <h2 class="section-heading">Finalità <em>del trattamento</em></h2>
+    <p>I dati dell'utente sono raccolti per consentire al Titolare di erogare il servizio, adempiere agli obblighi di legge, rispondere a richieste o azioni esecutive, tutelare i propri diritti e interessi, e per le seguenti finalità specifiche:</p>
+    <ul class="privacy-list">
+      <li>Gestione delle prenotazioni parcheggio</li>
+      <li>Contatto con l'utente in risposta a richieste</li>
+      <li>Statistica e analisi del traffico web</li>
+      <li>Servizi di piattaforma e hosting</li>
+      <li>Protezione dallo spam</li>
+      <li>Visualizzazione di contenuti da piattaforme esterne (mappe, font)</li>
+      <li>Gestione dei tag</li>
+      <li>Remarketing e behavioral targeting</li>
+    </ul>
+    <div class="note-box">Questo sito non elabora alcun dato di pagamento. I dettagli di pagamento non vengono raccolti direttamente dal Titolare.</div>
+  </div>
+
+  <!-- 5. SERVIZI TERZI -->
+  <div class="privacy-section" id="servizi-terzi">
+    <div class="section-num">05</div>
+    <h2 class="section-heading">Servizi terzi <em>utilizzati</em></h2>
+    <p>Il sito si avvale dei seguenti servizi di terze parti, ciascuno dei quali può raccogliere dati personali secondo le proprie policy:</p>
+
+    <div class="service-block">
+      <div class="service-name">Google Analytics (con IP anonimizzato)</div>
+      <div class="service-provider">Google LLC / Google Ireland Limited</div>
+      <div class="service-desc">Servizio di analisi web. L'indirizzo IP viene anonimizzato entro i confini UE/SEE prima di qualsiasi trasmissione. Può raccogliere dati demografici e di interazione con gli annunci tramite cookie DoubleClick. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> · <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Opt-out</a></div>
+    </div>
+
+    <div class="service-block">
+      <div class="service-name">Google Tag Manager</div>
+      <div class="service-provider">Google LLC / Google Ireland Limited</div>
+      <div class="service-desc">Gestione centralizzata dei tag e degli script utilizzati sul sito. Dati trattati: dati di utilizzo. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></div>
+    </div>
+
+    <div class="service-block">
+      <div class="service-name">Google reCAPTCHA</div>
+      <div class="service-provider">Google LLC / Google Ireland Limited</div>
+      <div class="service-desc">Protezione dallo spam e dai bot. Dati trattati: dati di utilizzo e strumenti di tracciamento. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></div>
+    </div>
+
+    <div class="service-block">
+      <div class="service-name">Google Fonts</div>
+      <div class="service-provider">Google LLC / Google Ireland Limited</div>
+      <div class="service-desc">Visualizzazione dei caratteri tipografici. Può raccogliere dati di utilizzo. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></div>
+    </div>
+
+    <div class="service-block">
+      <div class="service-name">Google Maps</div>
+      <div class="service-provider">Google LLC / Google Ireland Limited</div>
+      <div class="service-desc">Visualizzazione di mappe interattive. Dati trattati: dati di utilizzo e strumenti di tracciamento. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></div>
+    </div>
+
+    <div class="service-block">
+      <div class="service-name">Remarketing con Google Analytics</div>
+      <div class="service-provider">Google LLC / Google Ireland Limited</div>
+      <div class="service-desc">Collega l'attività di tracciamento di Google Analytics con il network pubblicitario Google Ads e il cookie DoubleClick, per mostrare annunci personalizzati. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> · <a href="https://adssettings.google.com/authenticated" target="_blank">Opt-out</a></div>
+    </div>
+
+    <div class="service-block">
+      <div class="service-name">Google Apps Script / Google Drive</div>
+      <div class="service-provider">Google LLC / Google Ireland Limited</div>
+      <div class="service-desc">Infrastruttura backend per la ricezione e l'elaborazione delle richieste di prenotazione parcheggio compilate sul sito. I dati inseriti nel modulo di prenotazione transitano attraverso i server Google. <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></div>
+    </div>
+  </div>
+
+  <!-- 6. DIRITTI -->
+  <div class="privacy-section" id="diritti">
+    <div class="section-num">06</div>
+    <h2 class="section-heading">Diritti <em>dell'utente</em></h2>
+    <p>Ai sensi del Regolamento UE 2016/679, l'utente ha il diritto di esercitare in qualsiasi momento i seguenti diritti nei confronti del Titolare:</p>
+
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="right-card-title">Accesso ai dati</div>
+        <div class="right-card-desc">Ottenere informazioni sui dati trattati e riceverne una copia.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Rettificazione</div>
+        <div class="right-card-desc">Verificare la correttezza dei propri dati e richiederne l'aggiornamento o la correzione.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Cancellazione</div>
+        <div class="right-card-desc">Richiedere la cancellazione dei propri dati quando ricorrono le condizioni previste dalla normativa.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Limitazione del trattamento</div>
+        <div class="right-card-desc">Richiedere che i dati non vengano trattati per scopi diversi dalla loro conservazione.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Portabilità dei dati</div>
+        <div class="right-card-desc">Ricevere i propri dati in formato strutturato e leggibile automaticamente, o richiederne il trasferimento a un altro titolare.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Opposizione al trattamento</div>
+        <div class="right-card-desc">Opporsi al trattamento quando basato su interesse legittimo o su finalità di marketing diretto, senza dover fornire motivazione in quest'ultimo caso.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Revoca del consenso</div>
+        <div class="right-card-desc">Revocare in qualsiasi momento il consenso precedentemente espresso, senza pregiudizio per la liceità del trattamento precedente.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-card-title">Reclamo all'autorità</div>
+        <div class="right-card-desc">Proporre reclamo al Garante per la Protezione dei Dati Personali o agire in sede giudiziale.</div>
+      </div>
+    </div>
+
+    <div class="note-box">Per esercitare i propri diritti, l'utente può contattare il Titolare all'indirizzo <a href="mailto:amministrazione.cityparking@gmail.com" style="color:var(--accent)">amministrazione.cityparking@gmail.com</a>. Le richieste sono gratuite e vengono evase entro 30 giorni.</div>
+  </div>
+
+  <!-- 7. ALTRO -->
+  <div class="privacy-section" id="altro">
+    <div class="section-num">07</div>
+    <h2 class="section-heading">Ulteriori <em>informazioni</em></h2>
+
+    <p><strong>Difesa in giudizio.</strong> I dati personali dell'utente possono essere utilizzati dal Titolare in giudizio o nelle fasi preparatorie alla sua eventuale instaurazione, per difendersi da abusi nell'utilizzo del sito o dei servizi connessi. L'utente è consapevole che il Titolare potrebbe essere obbligato a comunicare i dati per ordine delle autorità pubbliche.</p>
+
+    <p><strong>Log di sistema e manutenzione.</strong> Per necessità legate al funzionamento e alla manutenzione, il sito e i servizi terzi da esso utilizzati possono raccogliere log di sistema contenenti dati personali, quali l'indirizzo IP dell'utente.</p>
+
+    <p><strong>Richieste "Do Not Track".</strong> Questo sito non supporta le richieste "Do Not Track". Per verificare se i servizi terzi utilizzati le supportino, si invita a consultare le rispettive privacy policy.</p>
+
+    <p><strong>Modifiche alla presente policy.</strong> Il Titolare si riserva il diritto di modificare questa informativa in qualsiasi momento, notificandolo agli utenti tramite questa pagina. Si raccomanda di consultarla periodicamente. Qualora le modifiche interessino trattamenti basati sul consenso, il Titolare raccoglierà nuovamente il consenso ove necessario.</p>
+
+    <p><strong>Informative aggiuntive.</strong> Su richiesta dell'utente, il sito può fornire informative contestuali aggiuntive per servizi specifici o per la raccolta di determinati dati.</p>
+  </div>
+
+  <!-- 8. DEFINIZIONI -->
+  <div class="privacy-section" id="definizioni">
+    <div class="section-num">08</div>
+    <h2 class="section-heading"><em>Definizioni</em></h2>
+
+    <ul class="privacy-list">
+      <li><strong>Dati Personali</strong> — qualsiasi informazione che, direttamente o indirettamente, renda identificata o identificabile una persona fisica.</li>
+      <li><strong>Dati di Utilizzo</strong> — informazioni raccolte automaticamente durante la navigazione: indirizzi IP, URI, orario della richiesta, browser, sistema operativo, durata della visita, pagine consultate.</li>
+      <li><strong>Utente / Interessato</strong> — la persona fisica che utilizza il sito e a cui si riferiscono i dati personali trattati.</li>
+      <li><strong>Titolare del Trattamento</strong> — la persona giuridica che determina le finalità e i mezzi del trattamento dei dati personali. In questo caso: City Parking S.r.l.</li>
+      <li><strong>Responsabile del Trattamento</strong> — la persona fisica o giuridica che tratta dati personali per conto del Titolare.</li>
+      <li><strong>Cookie</strong> — strumenti di tracciamento consistenti in piccole porzioni di dati conservate nel browser dell'utente.</li>
+      <li><strong>Strumento di Tracciamento</strong> — qualsiasi tecnologia (cookie, identificativi univoci, web beacon, script integrati, e-tag, fingerprinting) che consenta di tracciare gli utenti.</li>
+      <li><strong>Questo Sito Web</strong> — cityparkingfirenze.it, lo strumento tramite cui vengono raccolti e trattati i dati personali degli utenti.</li>
+    </ul>
+
+    <p style="margin-top:32px; font-size:13px; color:var(--text-light);">La presente informativa è redatta sulla base degli artt. 13 e 14 del Regolamento (UE) 2016/679 e riguarda esclusivamente il sito cityparkingfirenze.it.</p>
+    <p style="font-size:13px; color:var(--text-light); margin-top:8px;"><strong>Ultima modifica:</strong> 11 agosto 2023</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">City<span>Parking</span> — Firenze</div>
+  <div style="font-size:11px; color:var(--text-light);">
+    City Parking S.r.l. · P.IVA 07108520482 · <a href="mailto:amministrazione.cityparking@gmail.com" style="color:var(--text-light);">amministrazione.cityparking@gmail.com</a>
+  </div>
+  <div class="footer-copy">© 2025 CityParking S.r.l.</div>
+</footer>
+
+</body>
+</html>
