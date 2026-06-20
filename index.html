@@ -136,8 +136,6 @@
   .pricing-hint { display: none; font-size: 16px; color: var(--accent); padding: 8px 0 0; font-style: italic; font-family: 'Cormorant Garamond', serif; }
   .form-submit-row { margin-top: 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-top: 32px; border-top: 1px solid var(--border-light); }
   .form-note { font-size: 12px; color: var(--text-light); font-weight: 300; }
-  .form-success { display: none; padding: 24px 28px; border: 1px solid rgba(139,107,61,0.3); background: var(--accent-light); margin-top: 24px; }
-  .form-success p { font-size: 18px; color: var(--accent); font-weight: 300; font-style: italic; font-family: 'Cormorant Garamond', serif; }
   .contact-email-note { font-size: 12px; color: var(--text-light); margin-top: 20px; font-weight: 300; }
   .contact-email-note a { color: var(--accent); text-decoration: none; }
 
@@ -151,7 +149,6 @@
   .garage-zone.ztl { border: 1px solid var(--blue); color: var(--blue); background: var(--blue-dim); }
   .garage-zone.no-ztl { border: 1px solid var(--border); color: var(--text-light); }
 
-  /* PRICING — due sezioni separate */
   .pricing-note { font-size: 13px; color: var(--text-dim); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 17px; margin-bottom: 32px; padding: 14px 20px; border-left: 2px solid var(--accent); background: var(--accent-light); }
   .pricing-garage-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--text); margin-bottom: 20px; margin-top: 48px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light); }
   .pricing-garage-title:first-of-type { margin-top: 0; }
@@ -299,8 +296,8 @@
   <div class="section-kicker"><div class="section-kicker-line"></div><span data-lang="it">Prenotazione</span><span data-lang="en">Reservation</span></div>
   <h2 class="section-title" data-lang="it">Scegli il garage<br>e <em>prenota.</em></h2>
   <h2 class="section-title" data-lang="en">Choose your garage<br>and <em>book.</em></h2>
-  <p class="section-sub" data-lang="it">Il personale verrà avvisato del tuo arrivo e sarà pronto ad accoglierti. Riceverai conferma via email.</p>
-  <p class="section-sub" data-lang="en">Our staff will be notified of your arrival and ready to welcome you. You will receive a confirmation by email.</p>
+  <p class="section-sub" data-lang="it">Il personale verrà avvisato del tuo arrivo e sarà pronto ad accoglierti. Al termine riceverai un riepilogo della prenotazione.</p>
+  <p class="section-sub" data-lang="en">Our staff will be notified of your arrival and ready to welcome you. You will receive a booking summary upon submission.</p>
 
   <div class="booking-tabs">
     <button class="booking-tab active" onclick="switchGarage('fiesolana',this)">City Parking Fiesolana</button>
@@ -317,76 +314,71 @@
       <p data-lang="it">Via Fiesolana — a pochi passi da Piazza Santa Croce e dal Duomo</p>
       <p data-lang="en">Via Fiesolana — steps from Piazza Santa Croce and the Duomo</p>
     </div>
-    <form action="https://formspree.io/f/mgoblege" method="POST" onsubmit="handleFormSubmit(event,'fiesolana')">
-      <input type="hidden" name="_subject" value="Prenotazione Web — City Parking Fiesolana">
-      <input type="hidden" name="Garage" value="City Parking Fiesolana">
+    <form action="https://script.google.com/macros/s/AKfycbzRB9vkm8WvvjDW23-h5xdRsWsv4vsiwDzip5eTs_oANYTeNcMs1OohHT44aatfBUt6/exec" method="POST" target="_blank">
+      <input type="hidden" name="garage" value="Fiesolana">
       <div class="form-grid">
         <div class="form-group">
           <label class="form-label">Email <span class="req">*</span></label>
-          <input type="email" name="Email" class="form-input" required placeholder="tuaemail@esempio.it">
+          <input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it">
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Full Name <span class="req">*</span></label>
-          <input type="text" name="Nome e Cognome" class="form-input" required placeholder="Mario Rossi">
+          <input type="text" name="nome" class="form-input" required placeholder="Mario Rossi">
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Telefono <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Phone <span class="req">*</span></label>
-          <input type="tel" name="Telefono" class="form-input" required placeholder="+39 000 000 0000">
+          <input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000">
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
-          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-fiesolana','std')">
+          <select name="veicolo" class="form-select" required onchange="updatePricing(this,'hint-fiesolana','std')">
             <option value="" data-lang="it">Seleziona…</option>
             <option value="" data-lang="en">Select…</option>
-            <option value="small" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option>
-            <option value="small" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
-            <option value="medium" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option>
-            <option value="medium" data-lang="en">Medium/Large — SUV, Mercedes GLE… (€40/day · €8/hr)</option>
-            <option value="luxury" data-lang="it">Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)</option>
-            <option value="luxury" data-lang="en">Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)</option>
+            <option value="Piccola — Fiat 500, Toyota Aygo (35€/giorno · 7€/ora)" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option>
+            <option value="Small — Fiat 500, Toyota Aygo (€35/day · €7/hr)" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
+            <option value="Media/Grande — SUV, Mercedes GLE (40€/giorno · 8€/ora)" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option>
+            <option value="Medium/Large — SUV, Mercedes GLE (€40/day · €8/hr)" data-lang="en">Medium/Large — SUV, Mercedes GLE… (€40/day · €8/hr)</option>
+            <option value="Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)" data-lang="it">Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)</option>
+            <option value="Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)" data-lang="en">Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)</option>
           </select>
           <div class="pricing-hint" id="hint-fiesolana"></div>
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
-          <input type="date" name="Data di arrivo" class="form-input" required>
+          <input type="date" name="arrivo" class="form-input" required>
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
-          <input type="time" name="Orario di arrivo" class="form-input" required>
+          <input type="time" name="oraArr" class="form-input" required>
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
-          <input type="date" name="Data di partenza" class="form-input" required>
+          <input type="date" name="partenza" class="form-input" required>
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
-          <input type="time" name="Orario di partenza" class="form-input" required>
+          <input type="time" name="oraPart" class="form-input" required>
         </div>
         <div class="form-group full">
           <label class="form-label" data-lang="it">Note aggiuntive</label>
           <label class="form-label" data-lang="en">Additional notes</label>
-          <textarea name="Note aggiuntive" class="form-textarea" placeholder="Informazioni aggiuntive…"></textarea>
+          <textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea>
         </div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">La conferma sarà inviata all'email indicata.</p>
-        <p class="form-note" data-lang="en">Confirmation will be sent to the email provided.</p>
+        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione.</p>
+        <p class="form-note" data-lang="en">You will see a booking summary upon submission.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
         <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
     </form>
-    <div class="form-success" id="success-fiesolana">
-      <p data-lang="it">Prenotazione inviata — riceverai conferma via email a breve.</p>
-      <p data-lang="en">Booking sent — you will receive a confirmation email shortly.</p>
-    </div>
     <p class="contact-email-note" data-lang="it">Per modifiche o cancellazioni: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
     <p class="contact-email-note" data-lang="en">To modify or cancel: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
   </div>
@@ -399,40 +391,76 @@
       <p data-lang="it">Via Venezia — zona centrale, accesso da viali</p>
       <p data-lang="en">Via Venezia — central area, access from ring roads</p>
     </div>
-    <form action="https://formspree.io/f/mvznboek" method="POST" onsubmit="handleFormSubmit(event,'venezia')">
-      <input type="hidden" name="_subject" value="Prenotazione Web — City Parking Via Venezia">
-      <input type="hidden" name="Garage" value="City Parking Via Venezia">
+    <form action="https://script.google.com/macros/s/AKfycbzRB9vkm8WvvjDW23-h5xdRsWsv4vsiwDzip5eTs_oANYTeNcMs1OohHT44aatfBUt6/exec" method="POST" target="_blank">
+      <input type="hidden" name="garage" value="Venezia">
       <div class="form-grid">
-        <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" name="Email" class="form-input" required placeholder="tuaemail@esempio.it"></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label><label class="form-label" data-lang="en">Full Name <span class="req">*</span></label><input type="text" name="Nome e Cognome" class="form-input" required placeholder="Mario Rossi"></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="Telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
-          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
-          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-venezia','std')">
-            <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
-            <option value="small" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option><option value="small" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
-            <option value="medium" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option><option value="medium" data-lang="en">Medium/Large — SUV, Mercedes GLE… (€40/day · €8/hr)</option>
-            <option value="luxury" data-lang="it">Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)</option><option value="luxury" data-lang="en">Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)</option>
+          <label class="form-label">Email <span class="req">*</span></label>
+          <input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Full Name <span class="req">*</span></label>
+          <input type="text" name="nome" class="form-input" required placeholder="Mario Rossi">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Telefono <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Phone <span class="req">*</span></label>
+          <input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
+          <select name="veicolo" class="form-select" required onchange="updatePricing(this,'hint-venezia','std')">
+            <option value="" data-lang="it">Seleziona…</option>
+            <option value="" data-lang="en">Select…</option>
+            <option value="Piccola — Fiat 500, Toyota Aygo (35€/giorno · 7€/ora)" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option>
+            <option value="Small — Fiat 500, Toyota Aygo (€35/day · €7/hr)" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
+            <option value="Media/Grande — SUV, Mercedes GLE (40€/giorno · 8€/ora)" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option>
+            <option value="Medium/Large — SUV, Mercedes GLE (€40/day · €8/hr)" data-lang="en">Medium/Large — SUV, Mercedes GLE… (€40/day · €8/hr)</option>
+            <option value="Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)" data-lang="it">Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)</option>
+            <option value="Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)" data-lang="en">Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)</option>
           </select>
           <div class="pricing-hint" id="hint-venezia"></div>
         </div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="Orario di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="Orario di partenza" class="form-input" required></div>
-        <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
+          <input type="date" name="arrivo" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
+          <input type="time" name="oraArr" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
+          <input type="date" name="partenza" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
+          <input type="time" name="oraPart" class="form-input" required>
+        </div>
+        <div class="form-group full">
+          <label class="form-label" data-lang="it">Note aggiuntive</label>
+          <label class="form-label" data-lang="en">Additional notes</label>
+          <textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea>
+        </div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">La conferma sarà inviata all'email indicata.</p><p class="form-note" data-lang="en">Confirmation will be sent to the email provided.</p>
-        <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
+        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione.</p>
+        <p class="form-note" data-lang="en">You will see a booking summary upon submission.</p>
+        <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
+        <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
     </form>
-    <div class="form-success" id="success-venezia"><p data-lang="it">Prenotazione inviata — riceverai conferma via email a breve.</p><p data-lang="en">Booking sent — confirmation email on its way.</p></div>
     <p class="contact-email-note" data-lang="it">Per modifiche: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
     <p class="contact-email-note" data-lang="en">To modify: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
   </div>
 
-  <!-- CIMABUE — tariffe diverse -->
+  <!-- CIMABUE -->
   <div class="booking-panel" id="panel-cimabue">
     <div class="booking-header">
       <h3 data-lang="it">Garage Cimabue <span class="no-ztl-chip">Fuori ZTL</span></h3>
@@ -440,36 +468,73 @@
       <p data-lang="it">Via Cimabue — pochi passi da Piazza C. Beccaria e Via Gioberti</p>
       <p data-lang="en">Via Cimabue — steps from Piazza C. Beccaria and Via Gioberti</p>
     </div>
-    <form action="https://formspree.io/f/xjgdevna" method="POST" onsubmit="handleFormSubmit(event,'cimabue')">
-      <input type="hidden" name="_subject" value="Prenotazione Web — City Parking Cimabue">
-      <input type="hidden" name="Garage" value="City Parking Cimabue">
+    <form action="https://script.google.com/macros/s/AKfycbzRB9vkm8WvvjDW23-h5xdRsWsv4vsiwDzip5eTs_oANYTeNcMs1OohHT44aatfBUt6/exec" method="POST" target="_blank">
+      <input type="hidden" name="garage" value="Cimabue">
       <div class="form-grid">
-        <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" name="Email" class="form-input" required placeholder="tuaemail@esempio.it"></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label><label class="form-label" data-lang="en">Full Name <span class="req">*</span></label><input type="text" name="Nome e Cognome" class="form-input" required placeholder="Mario Rossi"></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="Telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
-          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
-          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-cimabue','cim')">
-            <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
-            <option value="small" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (25€/giorno · 6€/ora)</option><option value="small" data-lang="en">Small — Fiat 500, Toyota Aygo… (€25/day · €6/hr)</option>
-            <option value="medium" data-lang="it">Media — Fiat 500L, Ford Focus… (30€/giorno · 6€/ora)</option><option value="medium" data-lang="en">Medium — Fiat 500L, Ford Focus… (€30/day · €6/hr)</option>
-            <option value="large" data-lang="it">Grande — SUV, Mercedes GLE… (35€/giorno · 7€/ora)</option><option value="large" data-lang="en">Large — SUV, Mercedes GLE… (€35/day · €7/hr)</option>
-            <option value="luxury" data-lang="it">Luxury / Van / Minivan 7+ posti (40-45€/giorno · 9€/ora)</option><option value="luxury" data-lang="en">Luxury / Van / Minivan 7+ seats (€40-45/day · €9/hr)</option>
+          <label class="form-label">Email <span class="req">*</span></label>
+          <input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Full Name <span class="req">*</span></label>
+          <input type="text" name="nome" class="form-input" required placeholder="Mario Rossi">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Telefono <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Phone <span class="req">*</span></label>
+          <input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
+          <select name="veicolo" class="form-select" required onchange="updatePricing(this,'hint-cimabue','cim')">
+            <option value="" data-lang="it">Seleziona…</option>
+            <option value="" data-lang="en">Select…</option>
+            <option value="Piccola — Fiat 500, Toyota Aygo (25€/giorno · 6€/ora)" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (25€/giorno · 6€/ora)</option>
+            <option value="Small — Fiat 500, Toyota Aygo (€25/day · €6/hr)" data-lang="en">Small — Fiat 500, Toyota Aygo… (€25/day · €6/hr)</option>
+            <option value="Media — Fiat 500L, Ford Focus (30€/giorno · 6€/ora)" data-lang="it">Media — Fiat 500L, Ford Focus… (30€/giorno · 6€/ora)</option>
+            <option value="Medium — Fiat 500L, Ford Focus (€30/day · €6/hr)" data-lang="en">Medium — Fiat 500L, Ford Focus… (€30/day · €6/hr)</option>
+            <option value="Grande — SUV, Mercedes GLE (35€/giorno · 7€/ora)" data-lang="it">Grande — SUV, Mercedes GLE… (35€/giorno · 7€/ora)</option>
+            <option value="Large — SUV, Mercedes GLE (€35/day · €7/hr)" data-lang="en">Large — SUV, Mercedes GLE… (€35/day · €7/hr)</option>
+            <option value="Luxury / Van / Minivan 7+ posti (40-45€/giorno · 9€/ora)" data-lang="it">Luxury / Van / Minivan 7+ posti (40-45€/giorno · 9€/ora)</option>
+            <option value="Luxury / Van / Minivan 7+ seats (€40-45/day · €9/hr)" data-lang="en">Luxury / Van / Minivan 7+ seats (€40-45/day · €9/hr)</option>
           </select>
           <div class="pricing-hint" id="hint-cimabue"></div>
         </div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="Orario di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="Orario di partenza" class="form-input" required></div>
-        <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
+          <input type="date" name="arrivo" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
+          <input type="time" name="oraArr" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
+          <input type="date" name="partenza" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
+          <input type="time" name="oraPart" class="form-input" required>
+        </div>
+        <div class="form-group full">
+          <label class="form-label" data-lang="it">Note aggiuntive</label>
+          <label class="form-label" data-lang="en">Additional notes</label>
+          <textarea name="note" class="form-textarea" placeholder="Richieste particolari…"></textarea>
+        </div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">La conferma sarà inviata all'email indicata.</p><p class="form-note" data-lang="en">Confirmation will be sent to the email provided.</p>
-        <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
+        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione.</p>
+        <p class="form-note" data-lang="en">You will see a booking summary upon submission.</p>
+        <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
+        <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
     </form>
-    <div class="form-success" id="success-cimabue"><p data-lang="it">Prenotazione inviata — riceverai conferma via email a breve.</p><p data-lang="en">Booking sent — confirmation email on its way.</p></div>
     <p class="contact-email-note" data-lang="it">Per modifiche: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
     <p class="contact-email-note" data-lang="en">To modify: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
   </div>
@@ -482,35 +547,71 @@
       <p data-lang="it">Borgo Pinti — zona Santa Croce</p>
       <p data-lang="en">Borgo Pinti — Santa Croce area</p>
     </div>
-    <form action="https://formspree.io/f/xlgkweqv" method="POST" onsubmit="handleFormSubmit(event,'borgopinti')">
-      <input type="hidden" name="_subject" value="Prenotazione Web — Garage Firenze Borgo Pinti">
-      <input type="hidden" name="Garage" value="Garage Firenze Borgo Pinti">
+    <form action="https://script.google.com/macros/s/AKfycbzRB9vkm8WvvjDW23-h5xdRsWsv4vsiwDzip5eTs_oANYTeNcMs1OohHT44aatfBUt6/exec" method="POST" target="_blank">
+      <input type="hidden" name="garage" value="Borgo Pinti">
       <div class="form-grid">
-        <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input type="email" name="Email" class="form-input" required placeholder="tuaemail@esempio.it"></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label><label class="form-label" data-lang="en">Full Name <span class="req">*</span></label><input type="text" name="Nome e Cognome" class="form-input" required placeholder="Mario Rossi"></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="Telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
-          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
-          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-borgopinti','std')">
-            <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
-            <option value="small" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option><option value="small" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
-            <option value="medium" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option><option value="medium" data-lang="en">Medium/Large — SUV, Mercedes GLE… (€40/day · €8/hr)</option>
-            <option value="luxury" data-lang="it">Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)</option><option value="luxury" data-lang="en">Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)</option>
+          <label class="form-label">Email <span class="req">*</span></label>
+          <input type="email" name="email" class="form-input" required placeholder="tuaemail@esempio.it">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Nome e Cognome <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Full Name <span class="req">*</span></label>
+          <input type="text" name="nome" class="form-input" required placeholder="Mario Rossi">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Telefono <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Phone <span class="req">*</span></label>
+          <input type="tel" name="telefono" class="form-input" required placeholder="+39 000 000 0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
+          <select name="veicolo" class="form-select" required onchange="updatePricing(this,'hint-borgopinti','std')">
+            <option value="" data-lang="it">Seleziona…</option>
+            <option value="" data-lang="en">Select…</option>
+            <option value="Piccola — Fiat 500, Toyota Aygo (35€/giorno · 7€/ora)" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option>
+            <option value="Small — Fiat 500, Toyota Aygo (€35/day · €7/hr)" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
+            <option value="Media/Grande — SUV, Mercedes GLE (40€/giorno · 8€/ora)" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option>
+            <option value="Medium/Large — SUV, Mercedes GLE (€40/day · €8/hr)" data-lang="en">Medium/Large — SUV, Mercedes GLE… (€40/day · €8/hr)</option>
+            <option value="Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)" data-lang="it">Luxury / Van / Minivan 7+ posti (50€/giorno · 10€/ora)</option>
+            <option value="Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)" data-lang="en">Luxury / Van / Minivan 7+ seats (€50/day · €10/hr)</option>
           </select>
           <div class="pricing-hint" id="hint-borgopinti"></div>
         </div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="Orario di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="Orario di partenza" class="form-input" required></div>
-        <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
+          <input type="date" name="arrivo" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
+          <input type="time" name="oraArr" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
+          <input type="date" name="partenza" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
+          <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
+          <input type="time" name="oraPart" class="form-input" required>
+        </div>
+        <div class="form-group full">
+          <label class="form-label" data-lang="it">Note aggiuntive</label>
+          <label class="form-label" data-lang="en">Additional notes</label>
+          <textarea name="note" class="form-textarea" placeholder="Convenzione hotel, richieste particolari…"></textarea>
+        </div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">La conferma sarà inviata all'email indicata.</p><p class="form-note" data-lang="en">Confirmation will be sent to the email provided.</p>
-        <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
+        <p class="form-note" data-lang="it">Al termine vedrai un riepilogo della tua prenotazione.</p>
+        <p class="form-note" data-lang="en">You will see a booking summary upon submission.</p>
+        <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
+        <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
     </form>
-    <div class="form-success" id="success-borgopinti"><p data-lang="it">Prenotazione inviata — riceverai conferma via email a breve.</p><p data-lang="en">Booking sent — confirmation email on its way.</p></div>
     <p class="contact-email-note" data-lang="it">Per modifiche: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
     <p class="contact-email-note" data-lang="en">To modify: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
   </div>
@@ -562,7 +663,6 @@
   <h2 class="section-title" data-lang="it">Prezzi chiari,<br>nessuna <em>sorpresa.</em></h2>
   <h2 class="section-title" data-lang="en">Clear rates,<br>no <em>surprises.</em></h2>
 
-  <!-- FIESOLANA / VENEZIA / BORGOPINTI -->
   <div class="pricing-garage-title" data-lang="it">Fiesolana · Via Venezia · Borgo Pinti</div>
   <div class="pricing-garage-title" data-lang="en">Fiesolana · Via Venezia · Borgo Pinti</div>
   <div class="pricing-grid">
@@ -592,7 +692,6 @@
     </div>
   </div>
 
-  <!-- CIMABUE -->
   <div class="pricing-garage-title" data-lang="it">Cimabue <em>(tariffe distinte)</em></div>
   <div class="pricing-garage-title" data-lang="en">Cimabue <em>(separate rates)</em></div>
   <div class="pricing-grid" style="grid-template-columns: repeat(4, 1fr);">
@@ -732,7 +831,6 @@
     document.getElementById('panel-' + garage).classList.add('active');
   }
 
-  // Tariffe per garage
   const PRICING = {
     std: {
       it: { small:'35€ al giorno · 7€ all\'ora', medium:'40€ al giorno · 8€ all\'ora', luxury:'50€ al giorno · 10€ all\'ora' },
@@ -753,31 +851,6 @@
       hint.style.display = 'block';
     } else {
       hint.style.display = 'none';
-    }
-  }
-
-  async function handleFormSubmit(e, garage) {
-    e.preventDefault();
-    const form = e.target;
-    const submitBtn = form.querySelector('button[type="submit"]');
-    form.style.opacity = '0.5';
-    form.style.pointerEvents = 'none';
-    if (submitBtn) submitBtn.textContent = '...';
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST', body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        form.style.display = 'none';
-        document.getElementById('success-' + garage).style.display = 'block';
-      } else {
-        form.style.opacity = '1'; form.style.pointerEvents = 'auto';
-        alert('Errore nell\'invio. Riprova o scrivi a prenotazione.cityparking@gmail.com');
-      }
-    } catch(err) {
-      form.style.opacity = '1'; form.style.pointerEvents = 'auto';
-      alert('Errore di connessione. Riprova o scrivi a prenotazione.cityparking@gmail.com');
     }
   }
 </script>
