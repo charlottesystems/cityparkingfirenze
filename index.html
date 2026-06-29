@@ -131,6 +131,7 @@
   .form-label .req { color: var(--accent); margin-left: 2px; }
   .form-input, .form-select, .form-textarea { background: var(--bg); border: 1px solid var(--border); border-radius: 0; color: var(--text); font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 300; padding: 13px 16px; transition: border-color 0.2s; outline: none; -webkit-appearance: none; appearance: none; }
   input[type="date"].form-input, input[type="time"].form-input { -webkit-appearance: auto !important; appearance: auto !important; padding-right: 8px; }
+  .field-hint { font-size: 11px; color: var(--text-light); font-weight: 300; margin-top: 2px; }
   .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px rgba(45,125,210,0.08); }
   .form-input::placeholder { color: var(--text-light); font-weight: 300; }
   .form-textarea { resize: vertical; min-height: 80px; }
@@ -381,7 +382,9 @@
         <div class="form-group">
           <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
-          <input type="text" name="Orario di arrivo" class="form-input" required placeholder="es. 14:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]">
+          <input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]">
+          <span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span>
+          <span class="field-hint" data-lang="en">24h format, e.g. 12:30</span>
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
@@ -391,7 +394,9 @@
         <div class="form-group">
           <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
-          <input type="text" name="Orario di partenza" class="form-input" required placeholder="es. 18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]">
+          <input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]">
+          <span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span>
+          <span class="field-hint" data-lang="en">24h format, e.g. 18:00</span>
         </div>
         <div class="form-group full">
           <label class="form-label" data-lang="it">Note aggiuntive</label>
@@ -435,9 +440,9 @@
           <div class="pricing-hint" id="hint-venezia"></div>
         </div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="es. 14:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="es. 18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
@@ -476,9 +481,9 @@
           <div class="pricing-hint" id="hint-cimabue"></div>
         </div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="es. 14:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="es. 18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
@@ -516,9 +521,9 @@
           <div class="pricing-hint" id="hint-borgopinti"></div>
         </div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="es. 14:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="es. 18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
@@ -818,8 +823,6 @@
       ? `<div class="summary-row"><span class="sl">${isEn ? 'Notes' : 'Note'}</span><span class="sv">${data['Note aggiuntive']}</span></div>`
       : '';
 
-    window._lastSummaryData = { ref, data, vehicle, isEn };
-
     const html = `<div class="summary-wrap">
       <div class="summary-header">
         <div class="summary-check">✓</div>
@@ -836,9 +839,6 @@
         <div class="summary-row"><span class="sl">${isEn ? 'Departure' : 'Partenza'}</span><span class="sv">${fmtDate(data['Data di partenza'])} — ${data['Orario di partenza'] || ''}</span></div>
         ${noteRow}
       </div>
-      <div class="summary-actions">
-        <button class="btn-primary" onclick="printSummary()">${isEn ? '↓ Download PDF' : '↓ Scarica PDF'}</button>
-      </div>
     </div>`;
 
     const el = document.getElementById('success-' + garage);
@@ -846,91 +846,7 @@
     el.style.display = 'block';
   }
 
-  function escapeHtml(str) {
-    return String(str == null ? '' : str)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
 
-  function printSummary() {
-    const s = window._lastSummaryData;
-    if (!s) return;
-    const isEn = s.isEn;
-    const d = s.data;
-    const noteRow = d['Note aggiuntive']
-      ? `<tr><td>${isEn ? 'Notes' : 'Note'}</td><td>${escapeHtml(d['Note aggiuntive'])}</td></tr>`
-      : '';
-
-    const printHtml = `<!DOCTYPE html><html lang="${isEn ? 'en' : 'it'}"><head>
-<meta charset="UTF-8">
-<title>City Parking Firenze — ${isEn ? 'Booking Confirmed' : 'Prenotazione Confermata'}</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap');
-  body { margin: 0; padding: 48px 56px; font-family: Inter, sans-serif; font-size: 14px; color: #1a1612; background: #fff; }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: #7a7060; margin-bottom: 40px; border-bottom: 1px solid #e0d9ce; padding-bottom: 20px; }
-  .logo span { color: #2d7dd2; }
-  .check-wrap { text-align: center; margin-bottom: 28px; }
-  .check { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; background: #8b6b3d; color: #fff; border-radius: 50%; font-size: 32px; margin-bottom: 16px; }
-  h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; margin: 0 0 6px; }
-  .ref { font-size: 11px; letter-spacing: 0.12em; color: #b0a590; text-transform: uppercase; }
-  .garage { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: #8b6b3d; margin: 28px 0 20px; padding-bottom: 12px; border-bottom: 1px solid #e0d9ce; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
-  td { padding: 12px 0; border-bottom: 1px solid #ece8e0; vertical-align: top; }
-  td:first-child { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #7a7060; width: 36%; font-weight: 400; }
-  td:last-child { font-weight: 300; text-align: right; }
-  .footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #e0d9ce; font-size: 11px; color: #b0a590; display: flex; justify-content: space-between; }
-  @media print {
-    body { padding: 32px 48px; }
-    @page { margin: 1.2cm; }
-  }
-</style>
-</head><body>
-<div class="logo">City<span>Parking</span> — Firenze &nbsp;·&nbsp; <span style="font-size:11px;font-family:Inter,sans-serif;color:#2d7dd2;">Sito Ufficiale</span></div>
-<div class="check-wrap">
-  <div><div class="check">✓</div></div>
-  <h1>${isEn ? 'Booking Confirmed' : 'Prenotazione Confermata'}</h1>
-  <div class="ref">${isEn ? 'Reference' : 'Riferimento'}: <strong>${s.ref}</strong></div>
-</div>
-<div class="garage">${escapeHtml(d['Garage'])}</div>
-<table>
-  <tr><td>${isEn ? 'Name' : 'Nome'}</td><td>${escapeHtml(d['Nome e Cognome'])}</td></tr>
-  <tr><td>Email</td><td>${escapeHtml(d['Email'])}</td></tr>
-  <tr><td>${isEn ? 'Phone' : 'Telefono'}</td><td>${escapeHtml(d['Telefono'])}</td></tr>
-  <tr><td>${isEn ? 'Vehicle' : 'Veicolo'}</td><td>${escapeHtml(s.vehicle)}</td></tr>
-  <tr><td>${isEn ? 'Arrival' : 'Arrivo'}</td><td>${fmtDate(d['Data di arrivo'])} — ${escapeHtml(d['Orario di arrivo'])}</td></tr>
-  <tr><td>${isEn ? 'Departure' : 'Partenza'}</td><td>${fmtDate(d['Data di partenza'])} — ${escapeHtml(d['Orario di partenza'])}</td></tr>
-  ${noteRow}
-</table>
-<div class="footer">
-  <span>cityparkingfirenze.it</span>
-  <span>prenotazione.cityparking@gmail.com</span>
-  <span>${new Date().toLocaleDateString('it-IT')}</span>
-</div>
-</body></html>`;
-
-    let iframe = document.getElementById('print-frame');
-    if (iframe) iframe.remove();
-    iframe = document.createElement('iframe');
-    iframe.id = 'print-frame';
-    iframe.style.position = 'fixed';
-    iframe.style.right = '0';
-    iframe.style.bottom = '0';
-    iframe.style.width = '0';
-    iframe.style.height = '0';
-    iframe.style.border = '0';
-    document.body.appendChild(iframe);
-
-    const doc = iframe.contentWindow.document;
-    doc.open();
-    doc.write(printHtml);
-    doc.close();
-
-    iframe.onload = function () {
-      setTimeout(function () {
-        iframe.contentWindow.focus();
-        iframe.contentWindow.print();
-      }, 250);
-    };
-  }
 </script>
 </body>
 </html>
