@@ -381,7 +381,7 @@
         <div class="form-group">
           <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
-          <input type="time" name="Orario di arrivo" class="form-input" required>
+          <input type="text" name="Orario di arrivo" class="form-input" required placeholder="es. 14:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]">
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
@@ -391,7 +391,7 @@
         <div class="form-group">
           <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
-          <input type="time" name="Orario di partenza" class="form-input" required>
+          <input type="text" name="Orario di partenza" class="form-input" required placeholder="es. 18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]">
         </div>
         <div class="form-group full">
           <label class="form-label" data-lang="it">Note aggiuntive</label>
@@ -435,9 +435,9 @@
           <div class="pricing-hint" id="hint-venezia"></div>
         </div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="Orario di arrivo" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="es. 14:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="Orario di partenza" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="es. 18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
@@ -476,9 +476,9 @@
           <div class="pricing-hint" id="hint-cimabue"></div>
         </div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="Orario di arrivo" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="es. 14:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="Orario di partenza" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="es. 18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
@@ -516,9 +516,9 @@
           <div class="pricing-hint" id="hint-borgopinti"></div>
         </div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="time" name="Orario di arrivo" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="es. 14:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
         <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="time" name="Orario di partenza" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="es. 18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
