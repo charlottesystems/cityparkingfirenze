@@ -846,16 +846,21 @@
     el.style.display = 'block';
   }
 
+  function escapeHtml(str) {
+    return String(str == null ? '' : str)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
   function printSummary() {
     const s = window._lastSummaryData;
     if (!s) return;
     const isEn = s.isEn;
     const d = s.data;
     const noteRow = d['Note aggiuntive']
-      ? `<tr><td>${isEn ? 'Notes' : 'Note'}</td><td>${d['Note aggiuntive']}</td></tr>`
+      ? `<tr><td>${isEn ? 'Notes' : 'Note'}</td><td>${escapeHtml(d['Note aggiuntive'])}</td></tr>`
       : '';
-    const win = window.open('', '_blank', 'width=740,height=960');
-    win.document.write(`<!DOCTYPE html><html lang="${isEn ? 'en' : 'it'}"><head>
+
+    const printHtml = `<!DOCTYPE html><html lang="${isEn ? 'en' : 'it'}"><head>
 <meta charset="UTF-8">
 <title>City Parking Firenze — ${isEn ? 'Booking Confirmed' : 'Prenotazione Confermata'}</title>
 <style>
@@ -885,14 +890,14 @@
   <h1>${isEn ? 'Booking Confirmed' : 'Prenotazione Confermata'}</h1>
   <div class="ref">${isEn ? 'Reference' : 'Riferimento'}: <strong>${s.ref}</strong></div>
 </div>
-<div class="garage">${d['Garage'] || ''}</div>
+<div class="garage">${escapeHtml(d['Garage'])}</div>
 <table>
-  <tr><td>${isEn ? 'Name' : 'Nome'}</td><td>${d['Nome e Cognome'] || ''}</td></tr>
-  <tr><td>Email</td><td>${d['Email'] || ''}</td></tr>
-  <tr><td>${isEn ? 'Phone' : 'Telefono'}</td><td>${d['Telefono'] || ''}</td></tr>
-  <tr><td>${isEn ? 'Vehicle' : 'Veicolo'}</td><td>${s.vehicle}</td></tr>
-  <tr><td>${isEn ? 'Arrival' : 'Arrivo'}</td><td>${fmtDate(d['Data di arrivo'])} — ${d['Orario di arrivo'] || ''}</td></tr>
-  <tr><td>${isEn ? 'Departure' : 'Partenza'}</td><td>${fmtDate(d['Data di partenza'])} — ${d['Orario di partenza'] || ''}</td></tr>
+  <tr><td>${isEn ? 'Name' : 'Nome'}</td><td>${escapeHtml(d['Nome e Cognome'])}</td></tr>
+  <tr><td>Email</td><td>${escapeHtml(d['Email'])}</td></tr>
+  <tr><td>${isEn ? 'Phone' : 'Telefono'}</td><td>${escapeHtml(d['Telefono'])}</td></tr>
+  <tr><td>${isEn ? 'Vehicle' : 'Veicolo'}</td><td>${escapeHtml(s.vehicle)}</td></tr>
+  <tr><td>${isEn ? 'Arrival' : 'Arrivo'}</td><td>${fmtDate(d['Data di arrivo'])} — ${escapeHtml(d['Orario di arrivo'])}</td></tr>
+  <tr><td>${isEn ? 'Departure' : 'Partenza'}</td><td>${fmtDate(d['Data di partenza'])} — ${escapeHtml(d['Orario di partenza'])}</td></tr>
   ${noteRow}
 </table>
 <div class="footer">
@@ -900,9 +905,31 @@
   <span>prenotazione.cityparking@gmail.com</span>
   <span>${new Date().toLocaleDateString('it-IT')}</span>
 </div>
-<script>window.onload = function(){ window.print(); }<\/script>
-</body></html>`);
-    win.document.close();
+</body></html>`;
+
+    let iframe = document.getElementById('print-frame');
+    if (iframe) iframe.remove();
+    iframe = document.createElement('iframe');
+    iframe.id = 'print-frame';
+    iframe.style.position = 'fixed';
+    iframe.style.right = '0';
+    iframe.style.bottom = '0';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = '0';
+    document.body.appendChild(iframe);
+
+    const doc = iframe.contentWindow.document;
+    doc.open();
+    doc.write(printHtml);
+    doc.close();
+
+    iframe.onload = function () {
+      setTimeout(function () {
+        iframe.contentWindow.focus();
+        iframe.contentWindow.print();
+      }, 250);
+    };
   }
 </script>
 </body>
