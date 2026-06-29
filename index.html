@@ -210,6 +210,23 @@
   body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E"); opacity: 0.6; }
   nav, section, footer, .booking-panel, .garages-grid, .pricing-grid, .ztl-layout, .contact-grid { position: relative; z-index: 1; }
 
+  /* Booking summary */
+  .form-success { display: none; }
+  .summary-wrap { padding: 40px 0 8px; }
+  .summary-header { text-align: center; padding-bottom: 28px; border-bottom: 1px solid var(--border-light); margin-bottom: 28px; }
+  .summary-check { width: 60px; height: 60px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 18px; }
+  .summary-confirmed { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 300; color: var(--text); margin-bottom: 6px; }
+  .summary-ref { font-size: 11px; letter-spacing: 0.12em; color: var(--text-light); text-transform: uppercase; }
+  .summary-garage-label { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--accent); margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--border-light); }
+  .summary-rows { display: flex; flex-direction: column; margin-bottom: 28px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--border-light); gap: 16px; }
+  .summary-row .sl { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); font-weight: 400; flex-shrink: 0; }
+  .summary-row .sv { font-size: 14px; color: var(--text); font-weight: 300; text-align: right; }
+  .summary-actions { display: flex; justify-content: center; padding-top: 8px; }
+
+  @keyframes summaryIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  .summary-wrap { animation: summaryIn 0.4s ease both; }
+
   @media (max-width: 900px) {
     nav { padding: 0 20px !important; height: 58px !important; }
     .nav-logo { font-size: 18px !important; }
@@ -304,8 +321,8 @@
   <div class="section-kicker"><div class="section-kicker-line"></div><span data-lang="it">Prenotazione</span><span data-lang="en">Reservation</span></div>
   <h2 class="section-title" data-lang="it">Scegli il garage<br>e <em>prenota.</em></h2>
   <h2 class="section-title" data-lang="en">Choose your garage<br>and <em>book.</em></h2>
-  <p class="section-sub" data-lang="it">Il personale verrà avvisato del tuo arrivo e sarà pronto ad accoglierti. Riceverai conferma via email.</p>
-  <p class="section-sub" data-lang="en">Our staff will be notified of your arrival and ready to welcome you. You will receive a confirmation by email.</p>
+  <p class="section-sub" data-lang="it">Il personale verrà avvisato del tuo arrivo e sarà pronto ad accoglierti.</p>
+  <p class="section-sub" data-lang="en">Our staff will be notified of your arrival and ready to welcome you.</p>
 
   <div class="booking-tabs">
     <button class="booking-tab active" onclick="switchGarage('fiesolana',this)">City Parking Fiesolana</button>
@@ -382,16 +399,11 @@
         </div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">La conferma sarà inviata all'email indicata.</p>
-        <p class="form-note" data-lang="en">Confirmation will be sent to the email provided.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
         <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
     </form>
-    <div class="form-success" id="success-fiesolana">
-      <p data-lang="it">Prenotazione inviata — riceverai conferma via email a breve.</p>
-      <p data-lang="en">Booking sent — you will receive a confirmation email shortly.</p>
-    </div>
+    <div class="form-success" id="success-fiesolana"></div>
     <p class="contact-email-note" data-lang="it">Per modifiche o cancellazioni: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
     <p class="contact-email-note" data-lang="en">To modify or cancel: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
   </div>
@@ -428,11 +440,10 @@
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">La conferma sarà inviata all'email indicata.</p><p class="form-note" data-lang="en">Confirmation will be sent to the email provided.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
     </form>
-    <div class="form-success" id="success-venezia"><p data-lang="it">Prenotazione inviata — riceverai conferma via email a breve.</p><p data-lang="en">Booking sent — confirmation email on its way.</p></div>
+    <div class="form-success" id="success-venezia"></div>
     <p class="contact-email-note" data-lang="it">Per modifiche: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
     <p class="contact-email-note" data-lang="en">To modify: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
   </div>
@@ -470,11 +481,10 @@
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">La conferma sarà inviata all'email indicata.</p><p class="form-note" data-lang="en">Confirmation will be sent to the email provided.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
     </form>
-    <div class="form-success" id="success-cimabue"><p data-lang="it">Prenotazione inviata — riceverai conferma via email a breve.</p><p data-lang="en">Booking sent — confirmation email on its way.</p></div>
+    <div class="form-success" id="success-cimabue"></div>
     <p class="contact-email-note" data-lang="it">Per modifiche: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
     <p class="contact-email-note" data-lang="en">To modify: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
   </div>
@@ -511,11 +521,10 @@
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
       <div class="form-submit-row">
-        <p class="form-note" data-lang="it">La conferma sarà inviata all'email indicata.</p><p class="form-note" data-lang="en">Confirmation will be sent to the email provided.</p>
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
     </form>
-    <div class="form-success" id="success-borgopinti"><p data-lang="it">Prenotazione inviata — riceverai conferma via email a breve.</p><p data-lang="en">Booking sent — confirmation email on its way.</p></div>
+    <div class="form-success" id="success-borgopinti"></div>
     <p class="contact-email-note" data-lang="it">Per modifiche: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
     <p class="contact-email-note" data-lang="en">To modify: <a href="mailto:prenotazione.cityparking@gmail.com">prenotazione.cityparking@gmail.com</a></p>
   </div>
@@ -763,7 +772,11 @@
     const submitBtn = form.querySelector('button[type="submit"]');
     form.style.opacity = '0.5';
     form.style.pointerEvents = 'none';
-    if (submitBtn) submitBtn.textContent = '...';
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '...'; }
+
+    const data = {};
+    new FormData(form).forEach((v, k) => { data[k] = v; });
+
     try {
       const response = await fetch(form.action, {
         method: 'POST', body: new FormData(form),
@@ -771,15 +784,124 @@
       });
       if (response.ok) {
         form.style.display = 'none';
-        document.getElementById('success-' + garage).style.display = 'block';
+        showBookingSummary(garage, data);
       } else {
         form.style.opacity = '1'; form.style.pointerEvents = 'auto';
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Invia prenotazione'; }
         alert('Errore nell\'invio. Riprova o scrivi a prenotazione.cityparking@gmail.com');
       }
     } catch(err) {
       form.style.opacity = '1'; form.style.pointerEvents = 'auto';
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Invia prenotazione'; }
       alert('Errore di connessione. Riprova o scrivi a prenotazione.cityparking@gmail.com');
     }
+  }
+
+  function fmtDate(d) {
+    if (!d) return '';
+    const [y, m, day] = d.split('-');
+    return day + '/' + m + '/' + y;
+  }
+
+  function showBookingSummary(garage, data) {
+    const isEn = document.body.classList.contains('lang-en');
+    const ref = 'CP' + Date.now().toString(36).toUpperCase().slice(-6);
+    const vehicleMap = {
+      small:  isEn ? 'Small'         : 'Piccola',
+      medium: isEn ? 'Medium / Large': 'Media / Grande',
+      large:  isEn ? 'Large'         : 'Grande',
+      luxury: 'Luxury / Van / Minivan'
+    };
+    const vehicle = vehicleMap[data['Tipo di veicolo']] || data['Tipo di veicolo'] || '';
+    const noteRow = data['Note aggiuntive']
+      ? `<div class="summary-row"><span class="sl">${isEn ? 'Notes' : 'Note'}</span><span class="sv">${data['Note aggiuntive']}</span></div>`
+      : '';
+
+    window._lastSummaryData = { ref, data, vehicle, isEn };
+
+    const html = `<div class="summary-wrap">
+      <div class="summary-header">
+        <div class="summary-check">✓</div>
+        <div class="summary-confirmed">${isEn ? 'Booking Confirmed' : 'Prenotazione Confermata'}</div>
+        <div class="summary-ref">${isEn ? 'Reference' : 'Riferimento'}: <strong>${ref}</strong></div>
+      </div>
+      <div class="summary-garage-label">${data['Garage'] || ''}</div>
+      <div class="summary-rows">
+        <div class="summary-row"><span class="sl">${isEn ? 'Name' : 'Nome'}</span><span class="sv">${data['Nome e Cognome'] || ''}</span></div>
+        <div class="summary-row"><span class="sl">Email</span><span class="sv">${data['Email'] || ''}</span></div>
+        <div class="summary-row"><span class="sl">${isEn ? 'Phone' : 'Telefono'}</span><span class="sv">${data['Telefono'] || ''}</span></div>
+        <div class="summary-row"><span class="sl">${isEn ? 'Vehicle' : 'Veicolo'}</span><span class="sv">${vehicle}</span></div>
+        <div class="summary-row"><span class="sl">${isEn ? 'Arrival' : 'Arrivo'}</span><span class="sv">${fmtDate(data['Data di arrivo'])} — ${data['Orario di arrivo'] || ''}</span></div>
+        <div class="summary-row"><span class="sl">${isEn ? 'Departure' : 'Partenza'}</span><span class="sv">${fmtDate(data['Data di partenza'])} — ${data['Orario di partenza'] || ''}</span></div>
+        ${noteRow}
+      </div>
+      <div class="summary-actions">
+        <button class="btn-primary" onclick="printSummary()">${isEn ? '↓ Download PDF' : '↓ Scarica PDF'}</button>
+      </div>
+    </div>`;
+
+    const el = document.getElementById('success-' + garage);
+    el.innerHTML = html;
+    el.style.display = 'block';
+  }
+
+  function printSummary() {
+    const s = window._lastSummaryData;
+    if (!s) return;
+    const isEn = s.isEn;
+    const d = s.data;
+    const noteRow = d['Note aggiuntive']
+      ? `<tr><td>${isEn ? 'Notes' : 'Note'}</td><td>${d['Note aggiuntive']}</td></tr>`
+      : '';
+    const win = window.open('', '_blank', 'width=740,height=960');
+    win.document.write(`<!DOCTYPE html><html lang="${isEn ? 'en' : 'it'}"><head>
+<meta charset="UTF-8">
+<title>City Parking Firenze — ${isEn ? 'Booking Confirmed' : 'Prenotazione Confermata'}</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@300;400&display=swap');
+  body { margin: 0; padding: 48px 56px; font-family: Inter, sans-serif; font-size: 14px; color: #1a1612; background: #fff; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: #7a7060; margin-bottom: 40px; border-bottom: 1px solid #e0d9ce; padding-bottom: 20px; }
+  .logo span { color: #2d7dd2; }
+  .check-wrap { text-align: center; margin-bottom: 28px; }
+  .check { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; background: #8b6b3d; color: #fff; border-radius: 50%; font-size: 32px; margin-bottom: 16px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; margin: 0 0 6px; }
+  .ref { font-size: 11px; letter-spacing: 0.12em; color: #b0a590; text-transform: uppercase; }
+  .garage { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: #8b6b3d; margin: 28px 0 20px; padding-bottom: 12px; border-bottom: 1px solid #e0d9ce; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+  td { padding: 12px 0; border-bottom: 1px solid #ece8e0; vertical-align: top; }
+  td:first-child { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #7a7060; width: 36%; font-weight: 400; }
+  td:last-child { font-weight: 300; text-align: right; }
+  .footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #e0d9ce; font-size: 11px; color: #b0a590; display: flex; justify-content: space-between; }
+  @media print {
+    body { padding: 32px 48px; }
+    @page { margin: 1.2cm; }
+  }
+</style>
+</head><body>
+<div class="logo">City<span>Parking</span> — Firenze &nbsp;·&nbsp; <span style="font-size:11px;font-family:Inter,sans-serif;color:#2d7dd2;">Sito Ufficiale</span></div>
+<div class="check-wrap">
+  <div><div class="check">✓</div></div>
+  <h1>${isEn ? 'Booking Confirmed' : 'Prenotazione Confermata'}</h1>
+  <div class="ref">${isEn ? 'Reference' : 'Riferimento'}: <strong>${s.ref}</strong></div>
+</div>
+<div class="garage">${d['Garage'] || ''}</div>
+<table>
+  <tr><td>${isEn ? 'Name' : 'Nome'}</td><td>${d['Nome e Cognome'] || ''}</td></tr>
+  <tr><td>Email</td><td>${d['Email'] || ''}</td></tr>
+  <tr><td>${isEn ? 'Phone' : 'Telefono'}</td><td>${d['Telefono'] || ''}</td></tr>
+  <tr><td>${isEn ? 'Vehicle' : 'Veicolo'}</td><td>${s.vehicle}</td></tr>
+  <tr><td>${isEn ? 'Arrival' : 'Arrivo'}</td><td>${fmtDate(d['Data di arrivo'])} — ${d['Orario di arrivo'] || ''}</td></tr>
+  <tr><td>${isEn ? 'Departure' : 'Partenza'}</td><td>${fmtDate(d['Data di partenza'])} — ${d['Orario di partenza'] || ''}</td></tr>
+  ${noteRow}
+</table>
+<div class="footer">
+  <span>cityparkingfirenze.it</span>
+  <span>prenotazione.cityparking@gmail.com</span>
+  <span>${new Date().toLocaleDateString('it-IT')}</span>
+</div>
+<script>window.onload = function(){ window.print(); }<\/script>
+</body></html>`);
+    win.document.close();
   }
 </script>
 </body>
