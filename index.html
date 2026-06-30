@@ -132,6 +132,11 @@
   .form-input, .form-select, .form-textarea { background: var(--bg); border: 1px solid var(--border); border-radius: 0; color: var(--text); font-size: 14px; font-family: 'Inter', sans-serif; font-weight: 300; padding: 13px 16px; transition: border-color 0.2s; outline: none; -webkit-appearance: none; appearance: none; }
   input[type="date"].form-input, input[type="time"].form-input { -webkit-appearance: auto !important; appearance: auto !important; padding-right: 8px; }
   .field-hint { font-size: 11px; color: var(--text-light); font-weight: 300; margin-top: 2px; }
+  .urgent-notice { background: #fff3cd; border: 1px solid #e0a800; border-left: 4px solid #e0a800; padding: 18px 22px; margin-bottom: 32px; }
+  .urgent-notice .urgent-title { font-weight: 500; font-size: 14px; color: #7a5700; margin-bottom: 6px; }
+  .urgent-notice .urgent-body { font-size: 14px; color: #5a4000; line-height: 1.7; }
+  .urgent-notice a { color: #5a4000; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(90,64,0,0.3); }
+  .urgent-notice a:hover { border-bottom-color: #5a4000; }
   .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--blue); background: var(--white); box-shadow: 0 0 0 3px rgba(45,125,210,0.08); }
   .form-input::placeholder { color: var(--text-light); font-weight: 300; }
   .form-textarea { resize: vertical; min-height: 80px; }
@@ -341,6 +346,12 @@
       <p data-lang="it">Via Fiesolana — a pochi passi da Piazza Santa Croce e dal Duomo</p>
       <p data-lang="en">Via Fiesolana — steps from Piazza Santa Croce and the Duomo</p>
     </div>
+    <div class="urgent-notice">
+      <div class="urgent-title" data-lang="it">⚠ Avviso — 30 giugno 2026: prenotazione online temporaneamente non disponibile</div>
+      <div class="urgent-title" data-lang="en">⚠ Notice — 30 June 2026: online booking temporarily unavailable</div>
+      <div class="urgent-body" data-lang="it">Per prenotare oggi chiama direttamente il garage:<br><a href="tel:+393665716947">+39 366 571 6947</a></div>
+      <div class="urgent-body" data-lang="en">To book today, call the garage directly:<br><a href="tel:+393665716947">+39 366 571 6947</a></div>
+    </div>
     <form action="https://formspree.io/f/mgoblege" method="POST" onsubmit="handleFormSubmit(event,'fiesolana')">
       <input type="hidden" name="_subject" value="Prenotazione Web — City Parking Fiesolana">
       <input type="hidden" name="Garage" value="City Parking Fiesolana">
@@ -422,6 +433,12 @@
       <p data-lang="it">Via Venezia — zona centrale, accesso da viali</p>
       <p data-lang="en">Via Venezia — central area, access from ring roads</p>
     </div>
+    <div class="urgent-notice">
+      <div class="urgent-title" data-lang="it">⚠ Avviso — 30 giugno 2026: prenotazione online temporaneamente non disponibile</div>
+      <div class="urgent-title" data-lang="en">⚠ Notice — 30 June 2026: online booking temporarily unavailable</div>
+      <div class="urgent-body" data-lang="it">Per prenotare oggi chiama direttamente il garage:<br><a href="tel:+393357465740">+39 335 746 5740</a></div>
+      <div class="urgent-body" data-lang="en">To book today, call the garage directly:<br><a href="tel:+393357465740">+39 335 746 5740</a></div>
+    </div>
     <form action="https://formspree.io/f/mvznboek" method="POST" onsubmit="handleFormSubmit(event,'venezia')">
       <input type="hidden" name="_subject" value="Prenotazione Web — City Parking Via Venezia">
       <input type="hidden" name="Garage" value="City Parking Via Venezia">
@@ -461,6 +478,12 @@
       <h3 data-lang="en">Cimabue Garage <span class="no-ztl-chip">Outside ZTL</span></h3>
       <p data-lang="it">Via Cimabue — pochi passi da Piazza C. Beccaria e Via Gioberti</p>
       <p data-lang="en">Via Cimabue — steps from Piazza C. Beccaria and Via Gioberti</p>
+    </div>
+    <div class="urgent-notice">
+      <div class="urgent-title" data-lang="it">⚠ Avviso — 30 giugno 2026: prenotazione online temporaneamente non disponibile</div>
+      <div class="urgent-title" data-lang="en">⚠ Notice — 30 June 2026: online booking temporarily unavailable</div>
+      <div class="urgent-body" data-lang="it">Per prenotare oggi chiama direttamente il garage:<br><a href="tel:+393665709962">+39 366 570 9962</a></div>
+      <div class="urgent-body" data-lang="en">To book today, call the garage directly:<br><a href="tel:+393665709962">+39 366 570 9962</a></div>
     </div>
     <form action="https://formspree.io/f/xjgdevna" method="POST" onsubmit="handleFormSubmit(event,'cimabue')">
       <input type="hidden" name="_subject" value="Prenotazione Web — City Parking Cimabue">
@@ -502,6 +525,12 @@
       <h3 data-lang="en">Garage Firenze Borgo Pinti <span class="ztl-chip">ZTL ✓</span></h3>
       <p data-lang="it">Borgo Pinti — zona Santa Croce</p>
       <p data-lang="en">Borgo Pinti — Santa Croce area</p>
+    </div>
+    <div class="urgent-notice">
+      <div class="urgent-title" data-lang="it">⚠ Avviso — 30 giugno 2026: prenotazione online temporaneamente non disponibile</div>
+      <div class="urgent-title" data-lang="en">⚠ Notice — 30 June 2026: online booking temporarily unavailable</div>
+      <div class="urgent-body" data-lang="it">Per prenotare oggi chiama direttamente il garage:<br><a href="tel:+393277550590">+39 327 755 0590</a></div>
+      <div class="urgent-body" data-lang="en">To book today, call the garage directly:<br><a href="tel:+393277550590">+39 327 755 0590</a></div>
     </div>
     <form action="https://formspree.io/f/xlgkweqv" method="POST" onsubmit="handleFormSubmit(event,'borgopinti')">
       <input type="hidden" name="_subject" value="Prenotazione Web — Garage Firenze Borgo Pinti">
