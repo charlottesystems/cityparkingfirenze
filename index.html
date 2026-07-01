@@ -763,8 +763,50 @@
 <script>
   const RATES = {
     std: { small:{day:35,hour:7}, medium:{day:40,hour:8}, luxury:{day:50,hour:10} },
-    cim: { small:{day:25,hour:6}, medium:{day:30,hour:6}, large:{day:35,hour:7}, luxury:{day:42.5,hour:9} }
+    cim: { small:{day:25,hour:6}, medium:{day:30,hour:6}, large:{day:35,hour:7}, luxury:{dayLow:40,dayHigh:45,hour:9} }
   };
+
+  /* Calcola costo a partire da minuti totali con le regole Charlotte:
+     - tolleranza 15 min sull'ora (2h15 = 2h, 2h16 = 3h)
+     - tolleranza 30 min sul giorno (24h30 = 1g, 24h31 = 1g+1h)
+     - ≤4h → tariffa oraria; >4h in un blocco → tariffa giornaliera intera
+     - blocchi da 24h ricorsivi: 26h = 1g + 2h, 29h = 2g */
+  function applyRules(totalMins, dayRate, hourRate) {
+    if (totalMins <= 0) return { cost: 0, days: 0, hours: 0 };
+
+    const completeDays    = Math.floor(totalMins / 1440);
+    const remainingMins   = totalMins % 1440;
+
+    let extraHours;
+    if (remainingMins <= 30) {
+      extraHours = 0; // tolleranza giornaliera
+    } else {
+      const wholeH   = Math.floor(remainingMins / 60);
+      const leftover = remainingMins % 60;
+      extraHours = leftover <= 15 ? wholeH : wholeH + 1; // tolleranza oraria
+    }
+
+    let days, hours, cost;
+    if (completeDays === 0 && extraHours <= 4) {
+      days = 0; hours = extraHours;
+      cost = extraHours * hourRate;
+    } else if (completeDays === 0 && extraHours > 4) {
+      days = 1; hours = 0;
+      cost = dayRate;
+    } else {
+      if (extraHours === 0) {
+        days = completeDays; hours = 0;
+        cost = completeDays * dayRate;
+      } else if (extraHours <= 4) {
+        days = completeDays; hours = extraHours;
+        cost = completeDays * dayRate + extraHours * hourRate;
+      } else {
+        days = completeDays + 1; hours = 0;
+        cost = (completeDays + 1) * dayRate;
+      }
+    }
+    return { cost, days, hours };
+  }
 
   function calcPreventivo(garage) {
     const panel = document.getElementById('panel-' + garage);
@@ -772,11 +814,11 @@
     const type  = garage === 'cimabue' ? 'cim' : 'std';
     const isEn  = document.body.classList.contains('lang-en');
 
-    const vehicle  = panel.querySelector('[name="Tipo di veicolo"]').value;
-    const arrDate  = panel.querySelector('[name="Data di arrivo"]').value;
-    const arrTime  = panel.querySelector('[name="Orario di arrivo"]').value.trim();
-    const depDate  = panel.querySelector('[name="Data di partenza"]').value;
-    const depTime  = panel.querySelector('[name="Orario di partenza"]').value.trim();
+    const vehicle = panel.querySelector('[name="Tipo di veicolo"]').value;
+    const arrDate = panel.querySelector('[name="Data di arrivo"]').value;
+    const arrTime = panel.querySelector('[name="Orario di arrivo"]').value.trim();
+    const depDate = panel.querySelector('[name="Data di partenza"]').value;
+    const depTime = panel.querySelector('[name="Orario di partenza"]').value.trim();
 
     if (!vehicle || !arrDate || !arrTime || !depDate || !depTime) { box.style.display='none'; return; }
 
@@ -787,35 +829,37 @@
     const rate = RATES[type][vehicle];
     if (!rate) { box.style.display='none'; return; }
 
-    const totalHours = (end - start) / 3600000;
-    const days       = Math.floor(totalHours / 24);
-    const remHours   = totalHours % 24;
+    const totalMins = Math.round((end - start) / 60000);
+    const isCimLux  = type === 'cim' && vehicle === 'luxury';
 
-    let costLow, costHigh, isCimLuxury = (type === 'cim' && vehicle === 'luxury');
-    if (isCimLuxury) {
-      costLow  = days * 40 + Math.ceil(remHours) * 9;
-      costHigh = days * 45 + Math.ceil(remHours) * 9;
+    let amountText, r;
+    if (isCimLux) {
+      const rLow  = applyRules(totalMins, rate.dayLow,  rate.hour);
+      const rHigh = applyRules(totalMins, rate.dayHigh, rate.hour);
+      r = rLow;
+      amountText = `~€${rLow.cost}–€${rHigh.cost}`;
     } else {
-      costLow = days * rate.day + (remHours > 0 ? Math.ceil(remHours) * rate.hour : 0);
+      r = applyRules(totalMins, rate.day, rate.hour);
+      amountText = `~€${r.cost}`;
     }
 
-    const amountText = isCimLuxury ? `~€${costLow}–€${costHigh}` : `~€${costLow}`;
-
-    let dur = '';
-    if (days > 0 && remHours > 0) {
-      const h = Math.ceil(remHours);
-      dur = isEn ? `${days} day${days>1?'s':''} and ${h} hour${h>1?'s':''}` : `${days} giorno${days>1?'i':''} e ${h} ora${h>1?'e':''}`;
-    } else if (days > 0) {
-      dur = isEn ? `${days} day${days>1?'s':''}` : `${days} giorno${days>1?'i':''}`;
+    // Testo descrittivo durata fatturata
+    const d = r.days, h = r.hours;
+    let breakdown = '';
+    if (d > 0 && h > 0) {
+      breakdown = isEn
+        ? `${d} day${d>1?'s':''} + ${h} hour${h>1?'s':''}`
+        : `${d} giorno${d>1?'i':''} + ${h} ora${h>1?'e':''}`;
+    } else if (d > 0) {
+      breakdown = isEn ? `${d} day${d>1?'s':''}` : `${d} giorno${d>1?'i':''}`;
     } else {
-      const h = Math.ceil(remHours);
-      dur = isEn ? `${h} hour${h>1?'s':''}` : `${h} ora${h>1?'e':''}`;
+      breakdown = isEn ? `${h} hour${h>1?'s':''}` : `${h} ora${h>1?'e':''}`;
     }
 
     box.innerHTML = `
       <div class="prev-header">${isEn ? 'Estimated price' : 'Preventivo stimato'}</div>
       <div class="prev-amount">${amountText}</div>
-      <div class="prev-duration">${dur}</div>
+      <div class="prev-duration">${breakdown}</div>
       <div class="prev-note">${isEn ? 'Indicative estimate — final price confirmed at the garage.' : 'Stima indicativa — il prezzo definitivo è confermato al garage.'}</div>`;
     box.style.display = 'block';
   }
