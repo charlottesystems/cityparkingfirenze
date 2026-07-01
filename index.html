@@ -869,6 +869,11 @@
     document.querySelectorAll('.lang-btn').forEach((btn, i) => {
       btn.classList.toggle('active', (i===0&&lang==='it')||(i===1&&lang==='en'));
     });
+    // Aggiorna le tariffe hint visibili quando si cambia lingua
+    document.querySelectorAll('[onchange*="updatePricing"]').forEach(sel => {
+      const match = sel.getAttribute('onchange').match(/updatePricing\(this,\s*'([^']+)',\s*'([^']+)'\)/);
+      if (match) updatePricing(sel, match[1], match[2]);
+    });
   }
 
   function switchGarage(garage, btn) {
