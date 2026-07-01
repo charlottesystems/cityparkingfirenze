@@ -135,6 +135,13 @@
   .garage-phone { font-size: 13px; color: var(--text-dim); font-weight: 300; margin-top: 8px; }
   .garage-phone a { color: var(--accent); text-decoration: none; }
   .garage-phone a:hover { text-decoration: underline; }
+
+  /* Preventivo */
+  .preventivo-box { display: none; margin-top: 28px; padding: 24px 28px; background: var(--blue-dim); border: 1px solid rgba(45,125,210,0.2); border-left: 3px solid var(--blue); }
+  .prev-header { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); font-weight: 400; margin-bottom: 12px; }
+  .prev-amount { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--text); line-height: 1; margin-bottom: 4px; }
+  .prev-duration { font-size: 13px; color: var(--text-dim); font-weight: 300; margin-bottom: 10px; }
+  .prev-note { font-size: 11px; color: var(--text-light); font-weight: 300; border-top: 1px solid rgba(45,125,210,0.15); padding-top: 10px; margin-top: 4px; }
   .urgent-notice { background: #fff3cd; border: 1px solid #e0a800; border-left: 4px solid #e0a800; padding: 18px 22px; margin-bottom: 32px; }
   .urgent-notice .urgent-title { font-weight: 500; font-size: 14px; color: #7a5700; margin-bottom: 6px; }
   .urgent-notice .urgent-body { font-size: 14px; color: #5a4000; line-height: 1.7; }
@@ -372,7 +379,7 @@
         <div class="form-group">
           <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
-          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-fiesolana','std')">
+          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-fiesolana','std'); calcPreventivo('fiesolana')">
             <option value="" data-lang="it">Seleziona…</option>
             <option value="" data-lang="en">Select…</option>
             <option value="small" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option>
@@ -387,24 +394,24 @@
         <div class="form-group">
           <label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label>
-          <input type="date" name="Data di arrivo" class="form-input" required>
+          <input type="date" name="Data di arrivo" class="form-input" required onchange="calcPreventivo('fiesolana')">
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label>
-          <input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]">
+          <input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]" oninput="calcPreventivo('fiesolana')">
           <span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span>
           <span class="field-hint" data-lang="en">24h format, e.g. 12:30</span>
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Departure date <span class="req">*</span></label>
-          <input type="date" name="Data di partenza" class="form-input" required>
+          <input type="date" name="Data di partenza" class="form-input" required onchange="calcPreventivo('fiesolana')">
         </div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label>
           <label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label>
-          <input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]">
+          <input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]" oninput="calcPreventivo('fiesolana')">
           <span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span>
           <span class="field-hint" data-lang="en">24h format, e.g. 18:00</span>
         </div>
@@ -414,6 +421,7 @@
           <textarea name="Note aggiuntive" class="form-textarea" placeholder="Informazioni aggiuntive…"></textarea>
         </div>
       </div>
+      <div id="preventivo-fiesolana" class="preventivo-box"></div>
       <div class="form-submit-row">
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button>
         <button type="submit" class="btn-primary" data-lang="en">Send booking</button>
@@ -443,7 +451,7 @@
         <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="Telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
-          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-venezia','std')">
+          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-venezia','std'); calcPreventivo('venezia')">
             <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
             <option value="small" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option><option value="small" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
             <option value="medium" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option><option value="medium" data-lang="en">Medium/Large — SUV, Mercedes GLE… (€40/day · €8/hr)</option>
@@ -451,12 +459,13 @@
           </select>
           <div class="pricing-hint" id="hint-venezia"></div>
         </div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required onchange="calcPreventivo('venezia')"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]" oninput="calcPreventivo('venezia')"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required onchange="calcPreventivo('venezia')"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]" oninput="calcPreventivo('venezia')"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
+      <div id="preventivo-venezia" class="preventivo-box"></div>
       <div class="form-submit-row">
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
@@ -485,7 +494,7 @@
         <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="Telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
-          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-cimabue','cim')">
+          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-cimabue','cim'); calcPreventivo('cimabue')">
             <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
             <option value="small" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (25€/giorno · 6€/ora)</option><option value="small" data-lang="en">Small — Fiat 500, Toyota Aygo… (€25/day · €6/hr)</option>
             <option value="medium" data-lang="it">Media — Fiat 500L, Ford Focus… (30€/giorno · 6€/ora)</option><option value="medium" data-lang="en">Medium — Fiat 500L, Ford Focus… (€30/day · €6/hr)</option>
@@ -494,12 +503,13 @@
           </select>
           <div class="pricing-hint" id="hint-cimabue"></div>
         </div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required onchange="calcPreventivo('cimabue')"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]" oninput="calcPreventivo('cimabue')"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required onchange="calcPreventivo('cimabue')"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]" oninput="calcPreventivo('cimabue')"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
+      <div id="preventivo-cimabue" class="preventivo-box"></div>
       <div class="form-submit-row">
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
@@ -528,7 +538,7 @@
         <div class="form-group"><label class="form-label" data-lang="it">Telefono <span class="req">*</span></label><label class="form-label" data-lang="en">Phone <span class="req">*</span></label><input type="tel" name="Telefono" class="form-input" required placeholder="+39 000 000 0000"></div>
         <div class="form-group">
           <label class="form-label" data-lang="it">Tipo di veicolo <span class="req">*</span></label><label class="form-label" data-lang="en">Vehicle size <span class="req">*</span></label>
-          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-borgopinti','std')">
+          <select name="Tipo di veicolo" class="form-select" required onchange="updatePricing(this,'hint-borgopinti','std'); calcPreventivo('borgopinti')">
             <option value="" data-lang="it">Seleziona…</option><option value="" data-lang="en">Select…</option>
             <option value="small" data-lang="it">Piccola — Fiat 500, Toyota Aygo… (35€/giorno · 7€/ora)</option><option value="small" data-lang="en">Small — Fiat 500, Toyota Aygo… (€35/day · €7/hr)</option>
             <option value="medium" data-lang="it">Media/Grande — SUV, Mercedes GLE… (40€/giorno · 8€/ora)</option><option value="medium" data-lang="en">Medium/Large — SUV, Mercedes GLE… (€40/day · €8/hr)</option>
@@ -536,12 +546,13 @@
           </select>
           <div class="pricing-hint" id="hint-borgopinti"></div>
         </div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required></div>
-        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di arrivo <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival date <span class="req">*</span></label><input type="date" name="Data di arrivo" class="form-input" required onchange="calcPreventivo('borgopinti')"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di arrivo (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Arrival time (approximate) <span class="req">*</span></label><input type="text" name="Orario di arrivo" class="form-input" required placeholder="12:30" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]" oninput="calcPreventivo('borgopinti')"><span class="field-hint" data-lang="it">Formato 24h, es. 12:30</span><span class="field-hint" data-lang="en">24h format, e.g. 12:30</span></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Data di partenza <span class="req">*</span></label><label class="form-label" data-lang="en">Departure date <span class="req">*</span></label><input type="date" name="Data di partenza" class="form-input" required onchange="calcPreventivo('borgopinti')"></div>
+        <div class="form-group"><label class="form-label" data-lang="it">Orario di partenza (approssimativo) <span class="req">*</span></label><label class="form-label" data-lang="en">Departure time (approximate) <span class="req">*</span></label><input type="text" name="Orario di partenza" class="form-input" required placeholder="18:00" inputmode="numeric" pattern="[0-2][0-9]:[0-5][0-9]" oninput="calcPreventivo('borgopinti')"><span class="field-hint" data-lang="it">Formato 24h, es. 18:00</span><span class="field-hint" data-lang="en">24h format, e.g. 18:00</span></div>
         <div class="form-group full"><label class="form-label" data-lang="it">Note aggiuntive</label><label class="form-label" data-lang="en">Additional notes</label><textarea name="Note aggiuntive" class="form-textarea" placeholder="…"></textarea></div>
       </div>
+      <div id="preventivo-borgopinti" class="preventivo-box"></div>
       <div class="form-submit-row">
         <button type="submit" class="btn-primary" data-lang="it">Invia prenotazione</button><button type="submit" class="btn-primary" data-lang="en">Send booking</button>
       </div>
@@ -750,6 +761,65 @@
 </footer>
 
 <script>
+  const RATES = {
+    std: { small:{day:35,hour:7}, medium:{day:40,hour:8}, luxury:{day:50,hour:10} },
+    cim: { small:{day:25,hour:6}, medium:{day:30,hour:6}, large:{day:35,hour:7}, luxury:{day:42.5,hour:9} }
+  };
+
+  function calcPreventivo(garage) {
+    const panel = document.getElementById('panel-' + garage);
+    const box   = document.getElementById('preventivo-' + garage);
+    const type  = garage === 'cimabue' ? 'cim' : 'std';
+    const isEn  = document.body.classList.contains('lang-en');
+
+    const vehicle  = panel.querySelector('[name="Tipo di veicolo"]').value;
+    const arrDate  = panel.querySelector('[name="Data di arrivo"]').value;
+    const arrTime  = panel.querySelector('[name="Orario di arrivo"]').value.trim();
+    const depDate  = panel.querySelector('[name="Data di partenza"]').value;
+    const depTime  = panel.querySelector('[name="Orario di partenza"]').value.trim();
+
+    if (!vehicle || !arrDate || !arrTime || !depDate || !depTime) { box.style.display='none'; return; }
+
+    const start = new Date(arrDate + 'T' + arrTime);
+    const end   = new Date(depDate + 'T' + depTime);
+    if (isNaN(start) || isNaN(end) || end <= start) { box.style.display='none'; return; }
+
+    const rate = RATES[type][vehicle];
+    if (!rate) { box.style.display='none'; return; }
+
+    const totalHours = (end - start) / 3600000;
+    const days       = Math.floor(totalHours / 24);
+    const remHours   = totalHours % 24;
+
+    let costLow, costHigh, isCimLuxury = (type === 'cim' && vehicle === 'luxury');
+    if (isCimLuxury) {
+      costLow  = days * 40 + Math.ceil(remHours) * 9;
+      costHigh = days * 45 + Math.ceil(remHours) * 9;
+    } else {
+      costLow = days * rate.day + (remHours > 0 ? Math.ceil(remHours) * rate.hour : 0);
+    }
+
+    const amountText = isCimLuxury ? `~€${costLow}–€${costHigh}` : `~€${costLow}`;
+
+    let dur = '';
+    if (days > 0 && remHours > 0) {
+      const h = Math.ceil(remHours);
+      dur = isEn ? `${days} day${days>1?'s':''} and ${h} hour${h>1?'s':''}` : `${days} giorno${days>1?'i':''} e ${h} ora${h>1?'e':''}`;
+    } else if (days > 0) {
+      dur = isEn ? `${days} day${days>1?'s':''}` : `${days} giorno${days>1?'i':''}`;
+    } else {
+      const h = Math.ceil(remHours);
+      dur = isEn ? `${h} hour${h>1?'s':''}` : `${h} ora${h>1?'e':''}`;
+    }
+
+    box.innerHTML = `
+      <div class="prev-header">${isEn ? 'Estimated price' : 'Preventivo stimato'}</div>
+      <div class="prev-amount">${amountText}</div>
+      <div class="prev-duration">${dur}</div>
+      <div class="prev-note">${isEn ? 'Indicative estimate — final price confirmed at the garage.' : 'Stima indicativa — il prezzo definitivo è confermato al garage.'}</div>`;
+    box.style.display = 'block';
+  }
+
   function setLang(lang) {
     document.body.classList.toggle('lang-en', lang === 'en');
     document.querySelectorAll('.lang-btn').forEach((btn, i) => {
